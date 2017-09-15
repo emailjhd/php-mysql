@@ -47,6 +47,22 @@
 <button type= "submit">Move MIDS from one GID to another</button>
 </form></th><td><b><i>If a customer decides that they want their merchants setup across multiple groups after CIAdmin have set them up under one group or CIADmin add a MID to the wrong group they need to be moved</i>
 </td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="7">
+<button type= "submit">Change Merchant Capabilities\Services on Mass</button>
+</form></th><td><b><i>We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database</i>
+</td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="8">
+<button type= "submit">Change Accepted Cardtypes on Mass</button>
+</form></th><td><b><i>We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database</i>
+</td></tr>
+
+
 </table>
 
 </body>
