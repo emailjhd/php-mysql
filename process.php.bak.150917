@@ -1,0 +1,122 @@
+<!docttype html>
+<head>
+<meta charset="utf-8">
+  <link rel="stylesheet" href="css/viewstyle.css">
+  <title>Database Query Result</title>
+<a href="index.html">Home Page</a>
+<style>
+table, th, td {
+        background-color:#eee;border-collapse:collapse;
+        padding: 5px;
+        border: 1px solid black;
+}
+</style>
+
+</head>
+<body>
+
+<?php
+session_start();
+
+
+$servername = "pm01tprmdb01v";
+$username = "sgarcia";
+$password = "nu98pa34ss4r";
+$mode = "$_POST[mode]";
+
+
+
+switch ($mode) {
+case 0:
+	$dbname = "db_ccardcfg";
+	$fld_merchant_no = "$_POST[fld_id]";
+	$header="Search for Scheduled MID data";
+	$sql_header=array("Merchant Number", "Amex Merchant", "Diners Merchant", "Bank Code", "Account Number", "Sort Code", "Company ID", "TID", "Merchant Type", "Auto TID", "Status", "Multiple Currency", "Monitored", "Group ID");
+	$query="SELECT `fld_merchant_no`,`fld_amex_merchant`,`fld_diners_merchant`,`fld_bank_code`,`fld_account_no`,`fld_sort_code`,`fld_company_id`,`fld_tid`,`fld_merchant_type`,`fld_auto_tid`,`fld_status` , `fld_multiple_cur` ,`fld_monitored`,`fld_groupid` FROM `tbl_merchant` WHERE fld_merchant_no in ($fld_merchant_no)  OR fld_amex_merchant in ($fld_merchant_no) OR fld_diners_merchant in  ($fld_merchant_no);";
+	break;
+case 1:
+        $dbname = "db_psp";
+        $fld_id_no = "$_POST[fld_id]";
+        $header="Search for Company Data";
+        $sql_header=array("ID", "Company Name", "Export", "Email Type", "Status", "Batch Priority");
+        $query="SELECT `fld_id`,`fld_company_name`,`fld_export`,`fld_email_type`,`fld_status`,`fld_batch_priority` FROM `tbl_company`  WHERE fld_id in ($fld_id_no);";
+        break;
+case 2:
+        $dbname = "db_psp";
+        $fld_id_no = "$_POST[fld_id]";
+        $header="Search for Scheduled Emails";
+        $sql_header=array("Id", "Email", "Email Type");
+        $query="SELECT `fld_id`,`fld_email`,`fld_email_type` FROM `tbl_email` WHERE fld_id in ($fld_id_no);";
+        break;
+case 3:
+        include 'update.php';
+        break;
+case 4:
+	include 'resetflag.php';
+        break;
+case 5:
+        $dbname = "db_ccardcfg";
+        $fld_groupid = "$_POST[fld_id]";
+        $header="Ad-hoc Merchant Exports";
+        $sql_header=array("Group ID", "Merchant Number", "Amex Merchant", "Diners Merchant");
+        $query="SELECT `fld_groupid`, `fld_merchant_no`, `fld_amex_merchant`, `fld_diners_merchant` FROM `tbl_merchant` WHERE  `fld_groupid` in ($fld_groupid);";
+        break;
+case 6:
+	$MID=$_POST["fld_id1"];
+	$oldGID=$_POST["fld_id2"];
+	$newGID=$_POST["fld_id3"];
+	$updateQuery="update tbl_merchant set fld_groupid='$newGID' where fld_merchant_no='$MID' and fld_groupid='$oldGID'";
+	$queryString="Select fld_groupid, fld_merchant_no from tbl_merchant where fld_merchant_no='$MID'";
+        break;
+
+}
+
+
+
+mysql_connect($servername,$username,$password);
+mysql_select_db($dbname) or die( "Unable to select database");
+$result1=mysql_query($queryupdate) or trigger_error(mysql_error().$query);
+
+
+
+// $result=mysql_query($query) or trigger_error(mysql_error().$query);
+$_SESSION['mysql_data'] = array();
+
+$rowno=mysql_num_rows($result);
+if ($rowno > 0) 
+	{
+     echo"<table border=1><tr>";
+     foreach ($sql_header as $value) {
+         echo "<th>$value</th>";
+     }
+     echo"</tr>";
+$_SESSION['mysql_data'][] = $sql_header;
+
+	
+     while($row = mysql_fetch_assoc($result))
+     {
+
+        echo"<tr>";
+      foreach ($row as $value) {
+ echo"<td>$value</td>";
+
+        }
+        echo"</tr>"; 
+
+
+$_SESSION['mysql_data'][] = $row;
+   }
+
+ } else {
+    echo " 0 results";
+
+
+}
+
+        
+mysql_close();
+echo "
+<a href='csv.php'>export to CSV</a>
+ </body> </html>";
+
+?>
