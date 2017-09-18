@@ -64,6 +64,10 @@ case 6:
 	include 'movemids.php'; 
 	break;
 
+case 7:
+      	include 'changeenmass.php';
+        break;
+
 }
 
 
