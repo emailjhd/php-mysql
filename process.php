@@ -68,6 +68,18 @@ case 7:
       	include 'changeenmass.php';
         break;
 
+case 8:
+        include 'changeenmassbygroup.php';
+        break;
+
+case 9:
+	include 'changeservicetypebymerchant.php';
+	break;
+
+case 10:
+        include 'changeservicetypebygroup.php';
+        break;
+
 }
 
 

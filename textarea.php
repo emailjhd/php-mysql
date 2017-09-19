@@ -65,45 +65,63 @@ case 6:
         break;
 
 case 7:
-	$input="2textbox";
-	$label1="Old Merchant Capabilities:";
+	$input="textareatextbox";
+//	$label1="Old Merchant Capabilities:";
         $label2="New Merchant Capabilities:";
 	$Label="<b>By Merchant Number</b>";
-        $header="Change Merchant Capabilities\Services En Mass";
+        $header="Change Merchant Capabilities En Mass (By Merchant Number)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
         $dest="process.php";
         break;
 
 
 case 8:
-        $input="2textbox";
-        $label1="Old Merchant Capabilities:";
+        $input="textareatextbox";
         $label2="New Merchant Capabilities:";
         $Label="<b>By Group</b>";
-        $header="Change Merchant Capabilities\Services En Mass";
+        $header="Change Merchant Capabilities En Mass (By Group)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
         $dest="process.php";
         break;
 
 case 9:
-        $input="2textbox";
-        $label1="Old Merchant Capabilities:";
-        $label2="New Merchant Capabilities:";
+        $input="textareatextbox";
+        $label2="Service Type:";
         $Label="<b>By Merchant Number</b>";
-        $header="Change Accepted CardTypes En Mass";
+        $header="Change Service Type En Mass (By Merchant Number)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
         $dest="process.php";
         break;
 
 case 10:
-        $input="2textbox";
+        $input="textareatextbox";
         $label1="Old Merchant Capabilities:";
         $label2="New Merchant Capabilities:";
         $Label="<b>By Group</b>";
-        $header="Change Accepted CardTypes En Mass";
+        $header="Change Service Type En Mass (By Group)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
         $dest="process.php";
         break;
+
+case 11:
+        $input="textareatextbox";
+        $label2="Card Accepted:";
+        $Label="<b>By Merchant Number</b>";
+        $header="Change Service Type En Mass (By Group)";
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+        $dest="process.php";
+        break;
+
+case 12:
+        $input="textareatextbox";
+        $label2="Card Accepted:";
+        $Label="<b>By Group</b>";
+        $header="Change Service Type En Mass (By Group)";
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+        $dest="process.php";
+        break;
+
+
 }
 
 
@@ -129,23 +147,30 @@ case "2textbox":
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
 
+case "textareatextbox":
+        echo"<tr><td valign='top'>$Label</td>";
+        echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
+        echo"<tr><td>$label2</td><td><input type='text' name='fld_id1'></td></tr>";
+        break;
+
 case "3textbox":
 	echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
 	echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
 	break;
+
 case "textboxandtextarea":
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
         break;
+
 case "4textbox":
 	echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
-
 }
 echo"</table>";
         echo"<input type='hidden' name='mode' value='$mode'>";

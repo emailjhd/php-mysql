@@ -29,28 +29,26 @@ mysql_select_db($dbname) or die( "Unable to select database");
 
 
 $fld_merchant_capabilities_new = "$_POST[fld_id1]";
-$fld_merchant_no = "$_POST[fld_id2]";
+$fld_groupid = "$_POST[fld_id2]";
 
 
 
-$sql_header=array("Merchant Capabilities", "Merchant Number");
-$queryupdate="UPDATE tbl_merchant SET fld_merchant_capabilities =  $fld_merchant_capabilities_new  WHERE fld_merchant_no in ($fld_merchant_no);";
-$result=mysql_query($queryupdate) or trigger_error(mysql_error().$query);
-$query="SELECT `fld_merchant_capabilities`, `fld_merchant_no` FROM `tbl_merchant` WHERE `fld_merchant_no` in ($fld_merchant_no);";
+$sql_header=array("Merchant Capabilities", "Group ID");
+$queryupdate="UPDATE tbl_merchant SET fld_merchant_capabilities =  $fld_merchant_capabilities_new  WHERE fld_groupid in ($fld_groupid);";
+$result=mysql_query($queryupdate) or trigger_error(mysql_error().$queryupdate);
+$query="SELECT `fld_merchant_capabilities`, `fld_groupid` FROM `tbl_merchant` WHERE `fld_groupid` in ($fld_groupid);";
+
 
 $rowno=mysql_num_rows($result);
 if ($rowno > 0) 
 	{
-echo "<table><tr><th>Merchant Capabilities</th><th>Merchant Number</th></tr>";	
+echo "<table><tr><th>Merchant Capabilities</th><th>Group ID</th></tr>";	
 while($row = mysql_fetch_array($result))
 {
 
-echo "<tr><td>".$row["fld_merchant_capabilities"]."</td><td>".$row["fld_merchant_no"]."</td><tr>";
+echo "<tr><td>".$row["fld_merchant_capabilities"]."</td><td>".$row["fld_groupid"]."</td><tr>";
 
 }
-
-
-
 
 }
 
