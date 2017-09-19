@@ -80,6 +80,15 @@ case 10:
         include 'changeservicetypebygroup.php';
         break;
 
+case 11:
+        include 'cacceptedbymerchant.php';
+        break;
+
+case 12:
+        include 'cacceptedbygroup.php';
+        break;
+
+
 }
 
 

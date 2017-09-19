@@ -107,7 +107,7 @@ case 11:
         $input="textareatextbox";
         $label2="Card Accepted:";
         $Label="<b>By Merchant Number</b>";
-        $header="Change Service Type En Mass (By Group)";
+        $header="Change Service Type En Mass (By Merchant Number)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
         $dest="process.php";
         break;
