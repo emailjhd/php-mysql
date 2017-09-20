@@ -22,14 +22,14 @@ case 1:
         $header="Search for Scheduled Company Data";
         $advice="CIAdmin schedule customers each day we use this data to search and export key fields to import into a spreadsheet that verifys the data entered via Admintool is correct e.g Export is enabled, the group is live etc...";
         $dest="process.php";
-        $Label="ID list:";
+        $Label="GID list:";
         break;
 case 2:
 	$input="textarea";
 	$header="Search for Scheduled emails";
         $advice="CIAdmin schedule customers each day we use this data to search and export to ensure an email address has been supplied to send reports to";
         $dest="process.php";
-	$Label="ID List:";
+	$Label="GID List:";
         break;
 case 3:
 	$input="textarea";
@@ -45,14 +45,14 @@ case 4:
         $advice="NursuryOnce a Natwest merchant has gone live as part of the Nursury file and it has been found to have no issues they are promoted to the live file
 ";
         $dest="process.php";
-	$Label="Merchant ID:";
+	$Label="MID List:";
         break;
 case 5:
 	$input="textarea";
 	$header="Ad-Hoc Merchant Exports";
 	$advice="CIAdmin require a list of merchant numbers under a specfic GID for a project that is being worked on or a customer has requested the data so we lookup the Merchants using the GID and then export the data. This may also be done on multiple groups if needed for a Partner";
 	$dest="process.php";
-	$Label="Group ID:";
+	$Label="GID List:";
 	break;
 case 6:
 	$input="3textbox";
@@ -68,7 +68,7 @@ case 7:
 	$input="textareatextbox";
 //	$label1="Old Merchant Capabilities:";
         $label2="New Merchant Capabilities:";
-	$Label="<b>By Merchant Number</b>";
+	$Label="<b>MID List</b>";
         $header="Change Merchant Capabilities En Mass (By Merchant Number)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
         $dest="process.php";
@@ -78,7 +78,7 @@ case 7:
 case 8:
         $input="textareatextbox";
         $label2="New Merchant Capabilities:";
-        $Label="<b>By Group</b>";
+        $Label="<b>GID List</b>";
         $header="Change Merchant Capabilities En Mass (By Group)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
         $dest="process.php";
@@ -87,7 +87,7 @@ case 8:
 case 9:
         $input="textareatextbox";
         $label2="Service Type:";
-        $Label="<b>By Merchant Number</b>";
+        $Label="<b>MID List</b>";
         $header="Change Service Type En Mass (By Merchant Number)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
         $dest="process.php";
@@ -97,7 +97,7 @@ case 10:
         $input="textareatextbox";
         $label1="Old Merchant Capabilities:";
         $label2="New Merchant Capabilities:";
-        $Label="<b>By Group</b>";
+        $Label="<b>GID List</b>";
         $header="Change Service Type En Mass (By Group)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
         $dest="process.php";
@@ -106,8 +106,8 @@ case 10:
 case 11:
         $input="textareatextbox";
         $label2="Card Accepted:";
-        $Label="<b>By Merchant Number</b>";
-        $header="Change Service Type En Mass (By Merchant Number)";
+        $Label="<b>MID List</b>";
+        $header="Change Accepted Card Types En Mass (By Merchant Number)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
         $dest="process.php";
         break;
@@ -115,12 +115,21 @@ case 11:
 case 12:
         $input="textareatextbox";
         $label2="Card Accepted:";
-        $Label="<b>By Group</b>";
-        $header="Change Service Type En Mass (By Group)";
+        $Label="<b>GID List</b>";
+        $header="Change Accepted Card Types En Mass (By Group)";
         $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
         $dest="process.php";
         break;
 
+case 13:
+        $input="textarea";
+        $label2="Card Accepted:";
+        $Label="<b>MID List</b>";
+        $header="Correct Export Times";
+        $advice="When a customer changes their export times via MIS the fld_last_export is not reset so if we do not update manually the next export run does not execute
+";
+        $dest="process.php";
+        break;
 
 }
 

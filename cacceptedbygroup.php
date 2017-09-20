@@ -33,10 +33,10 @@ $fld_groupid = "$_POST[fld_id2]";
 
 
 
-$sql_header=array("Card Accepted", "Group ID");
+$sql_header=array("Group ID", "Card Accepted");
 $queryupdate="UPDATE tbl_merchant SET fld_card_accepted =  $fld_card_accepted  WHERE fld_groupid in ($fld_groupid);";
 $result=mysql_query($queryupdate) or trigger_error(mysql_error().$query);
-$query="SELECT `fld_merchant_capabilities`, `fld_groupid` FROM `tbl_merchant` WHERE `fld_groupid` in ($fld_groupid);";
+$query="SELECT `fld_groupid`, `fld_card_accepted` FROM `tbl_merchant` WHERE `fld_groupid` in ($fld_groupid);";
 
 $rowno=mysql_num_rows($result);
 if ($rowno > 0) 
@@ -45,7 +45,7 @@ echo "<table><tr><th>Card Accepted</th><th>Group ID</th></tr>";
 while($row = mysql_fetch_array($result))
 {
 
-echo "<tr><td>".$row["fld_card_accepted"]."</td><td>".$row["fld_groupid"]."</td><tr>";
+echo "<tr><td>".$row["fld_groupid"]."</td><td>".$row["fld_card_accepted"]."</td><tr>";
 
 }
 

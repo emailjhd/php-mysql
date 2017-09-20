@@ -88,6 +88,15 @@ case 12:
         include 'cacceptedbygroup.php';
         break;
 
+case 13:
+	$dbname = "db_psp";
+        $fld_id_no = "$_POST[fld_id]";
+	$fld_trader = "$POST[fld_trader]";
+	$fld_trader_lnk = "$POST[fld_trader_lnk]";
+        $header="Correct Export Times";
+        $sql_header=array("Company Name", "Id");
+        $query="select fld_company_name, fld_id from tbl_company where fld_trader_lnk in (select fld_id from tbl_trader where fld_trader in ($fld_trader));;";
+        break;
 
 }
 
