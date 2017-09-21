@@ -33,19 +33,19 @@ $fld_merchant_no = "$_POST[fld_id2]";
 
 
 
-$sql_header=array("Merchant Capabilities", "Merchant Number");
+$sql_header=array("Merchant Number", "Merchant Capabilities");
 $queryupdate="UPDATE tbl_merchant SET fld_merchant_capabilities =  $fld_merchant_capabilities_new  WHERE fld_merchant_no in ($fld_merchant_no);";
 $result=mysql_query($queryupdate) or trigger_error(mysql_error().$query);
-$query="SELECT `fld_merchant_capabilities`, `fld_merchant_no` FROM `tbl_merchant` WHERE `fld_merchant_no` in ($fld_merchant_no);";
+$query="SELECT `fld_merchant_no`, `fld_merchant_capabilities` FROM `tbl_merchant` WHERE `fld_merchant_no` in ($fld_merchant_no);";
 
 $rowno=mysql_num_rows($result);
 if ($rowno > 0) 
 	{
-echo "<table><tr><th>Merchant Capabilities</th><th>Merchant Number</th></tr>";	
+echo "<table><tr><th>Merchant Namber</th><th>Merchant Capabilities</th></tr>";	
 while($row = mysql_fetch_array($result))
 {
 
-echo "<tr><td>".$row["fld_merchant_capabilities"]."</td><td>".$row["fld_merchant_no"]."</td><tr>";
+echo "<tr><td>".$row["fld_merchant_no"]."</td><td>".$row["fld_merchant_capabilities"]."</td><tr>";
 
 }
 

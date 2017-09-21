@@ -29,7 +29,7 @@ while($row = mysql_fetch_array($result))
 
 {
 
-$fld_id=$row["fld_id"];
+$fld_trader=$row["fld_trader"];
 	echo "<option>$fld_trader</option>";
 }
 

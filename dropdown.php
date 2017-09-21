@@ -23,14 +23,16 @@ mysql_select_db($dbname) or die( "Unable to select database");
 
 
 
-$query="select fld_id from tbl_trader where fld_trader in ('Global Travel','Thyron Systems');";
+$query="select fld_id, fld_trader from tbl_trader where fld_trader in ('Global Travel','Thyron Systems');";
 $result=mysql_query($query);
 while($row = mysql_fetch_array($result)) 
 
 {
 
 $fld_id=$row["fld_id"];
-	echo "<option>$fld_id</option>";
+$fld_trader=$row["fld_trader"];
+
+	echo "<option value = $fld_id> $fld_trader</option>";
 }
 
 ?>

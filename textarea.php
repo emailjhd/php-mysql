@@ -7,7 +7,7 @@
 
 
 $mode = $_POST[mode];
-        echo "i equals $mode";
+//        echo "i equals $mode";
 
 switch ($mode) {
 case 0:
@@ -122,13 +122,16 @@ case 12:
         break;
 
 case 13:
-        $input="textarea";
-        $label2="Card Accepted:";
-        $Label="<b>MID List</b>";
-        $header="Correct Export Times";
-        $advice="When a customer changes their export times via MIS the fld_last_export is not reset so if we do not update manually the next export run does not execute
-";
-        $dest="process.php";
+        $input="dropdown";
+        $servername = "pm01tprmdb01v";
+        $username = "sgarcia";
+        $password = "nu98pa34ss4r";
+        $dbname = "db_psp";
+        $query="select fld_id, fld_trader from tbl_trader where fld_trader in ('Global Travel','Thyron Systems');";
+        $Label="<b>Partner List</b>";
+        $header="Ad-Hoc Company Export";
+        $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
+	$dest="dropdowntest.php";
         break;
 
 }
@@ -179,6 +182,20 @@ case "4textbox":
         echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
+        break;
+
+case "dropdown":
+        echo"<tr><td valign='top'>$Label</td><td><select name='Traders'>";
+        mysql_connect($servername,$username,$password);
+        mysql_select_db($dbname) or die( "Unable to select database");
+        $result=mysql_query($query);
+        while($row = mysql_fetch_array($result))
+        {
+          $fld_id=$row["fld_id"];
+          $fld_trader=$row["fld_trader"];
+          echo "<option value = $fld_id> $fld_trader</option>";
+        }
+        echo"</select></td></tr>";
         break;
 }
 echo"</table>";
