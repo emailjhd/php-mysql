@@ -96,6 +96,19 @@
 </form></th><td><b><i>We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner</i>
 </td></tr>
 
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="14">
+<button type= "submit">Correct Export Times</button>
+</form></th><td><b><i>When a customer changes their export times via MIS the fld_last_export is not reset so if we do not update manually the next export run does not execute</i>
+</td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="15">
+<button type= "submit">Transaction Counts</button>
+</form></th><td><b><i>At the end of each week and\or month we run a query to count the number of transactions we have seen for installs that are still open on our schedule to see if they have been missed off reports</i>
+</td></tr>
+
 </table>
 
 </body>

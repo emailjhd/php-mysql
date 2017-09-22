@@ -7,7 +7,7 @@
 <body>
 
 
-<select id="Traders" name="Traders">
+<select  name="Traders">
  
 <?php
 

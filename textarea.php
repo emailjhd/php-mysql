@@ -127,11 +127,27 @@ case 13:
         $username = "sgarcia";
         $password = "nu98pa34ss4r";
         $dbname = "db_psp";
-        $query="select fld_id, fld_trader from tbl_trader where fld_trader in ('Global Travel','Thyron Systems');";
+        $query="select fld_id, fld_trader from tbl_trader where fld_trader in ($fld_trader);";
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
         $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
 	$dest="dropdowntest.php";
+        break;
+
+case 14:
+        $input="textarea";
+        $header="Correct Export Times";
+        $advice="When a customer changes their export times via MIS the fld_last_export is not reset so if we do not update manually the next export run does not execute";
+        $dest="process.php";
+        $Label="<b>MID list:<b>";
+        break;
+
+case 15:
+        $input="textarea";
+        $header="Transaction Counts";
+        $advice="At the end of each week and\or month we run a query to count the number of transactions we have seen for installs that are still open on our schedule to see if they have been missed off reports";
+        $dest="process.php";
+        $Label="<b>MID list:<b>";
         break;
 
 }

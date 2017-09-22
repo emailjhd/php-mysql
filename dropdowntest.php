@@ -22,8 +22,11 @@ mysql_connect($servername,$username,$password);
 mysql_select_db($dbname) or die( "Unable to select database");
 
 
+$fld_trader = "$_POST[fld_trader];
+$fld_id = "$_POST[fld_id];
 
-$query="select fld_trader from tbl_trader where fld_id in ('1','5');";
+
+$query="select fld_trader from tbl_trader where fld_id in ($fld_id);";
 $result=mysql_query($query);
 while($row = mysql_fetch_array($result)) 
 

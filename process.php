@@ -97,6 +97,18 @@ case 13:
         $sql_header=array("Company Name", "Id");
         $query="select fld_company_name, fld_id from tbl_company where fld_trader_lnk in (select fld_id from tbl_trader where fld_trader in ($fld_trader));;";
         break;
+case 14: 
+	include 'correctexporttimes.php';
+	break;
+
+case 15:
+        $dbname = "db_ccard";
+        $header="Transaction Counts";
+        $fld_merchant_no = "$_POST[fld_id]";
+        $sql_header=array("Merchant Number", "Transaction IDs");
+        $query="select fld_merchant_no, count(fld_tran_id) from tbl_ccard_hash where fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no;";
+        break;
+
 
 }
 
