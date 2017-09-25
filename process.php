@@ -93,12 +93,13 @@ case 13:
         $fld_id_no = "$_POST[fld_id]";
 	$fld_trader = "$POST[fld_trader]";
 	$fld_trader_lnk = "$POST[fld_trader_lnk]";
-        $header="Correct Export Times";
+        $header="Ad-Hoc Company Export";
         $sql_header=array("Company Name", "Id");
-        $query="select fld_company_name, fld_id from tbl_company where fld_trader_lnk in (select fld_id from tbl_trader where fld_trader in ($fld_trader));;";
+        $query="select fld_company_name, fld_id from tbl_company where fld_trader_lnk in (select fld_id from tbl_trader where fld_trader in ($fld_trader));";
+	echo "$query";
         break;
 case 14: 
-	include 'correctexporttimes.php';
+	include 'correctexporttime.php';
 	break;
 
 case 15:

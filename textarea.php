@@ -131,7 +131,7 @@ case 13:
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
         $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
-	$dest="dropdowntest.php";
+	$dest="dropdown.php";
         break;
 
 case 14:
@@ -204,12 +204,15 @@ case "dropdown":
         echo"<tr><td valign='top'>$Label</td><td><select name='Traders'>";
         mysql_connect($servername,$username,$password);
         mysql_select_db($dbname) or die( "Unable to select database");
-        $result=mysql_query($query);
-        while($row = mysql_fetch_array($result))
+	$query="SELECT fld_trader from db_psp.tbl_trader;";
+	$elements=array($query);
+//         $result=mysql_query($query);
+	echo "<select name='Trader'>";
+        while($row = mysql_fetch_array($elements))
         {
           $fld_id=$row["fld_id"];
           $fld_trader=$row["fld_trader"];
-          echo "<option value = $fld_id> $fld_trader</option>";
+        echo "<option value = $fld_id> $fld_trader</option>";
         }
         echo"</select></td></tr>";
         break;
