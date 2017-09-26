@@ -1,13 +1,3 @@
-<!docttype html>
-<head>
-<meta charset="utf-8">
-  <link rel="stylesheet" href="css/viewstyle.css">
-  <title>Database Query Result</title>
-</head>
-<body>
-
-
- 
 <?php
 
 $servername = "pm01tprmdb01v";
@@ -21,28 +11,29 @@ mysql_connect($servername,$username,$password);
 mysql_select_db($dbname) or die( "Unable to select database");
 
 
-$fld_id = "$_POST[fld_id]";
-$fld_trader = "$_POST[fld_trader]";
+//$fld_id = "$_POST[fld_id]";
+// $fld_trader = "$_POST[fld_trader]";
 
-$query="select fld_id, fld_trader from tbl_trader where fld_trader in ($fld_trader) order by fld_trader;";
+// $query="select distinct fld_trader from tbl_trader where fld_trader in ($fld_trader) order by fld_trader;";
+$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
+$query="select fld_id, fld_trader from tbl_trader order by fld_trader;";
+
 $result=mysql_query($query);
+echo "<select name='fld_id'>";
+ 
 while($row = mysql_fetch_array($result)) 
 
 {
 
-$fld_id=$row["fld_id"];
-$fld_trader=$row["fld_trader"];
 
 	echo "<option value=$fld_id>$fld_trader</option>";
+$fld_trader=$row["fld_trader"];
+echo "<option value='$fld_id'>$fld_trader</option>";
+
 }
 
+echo "</select>";
+
+mysql_close();
+
 ?>
-
- </select>
-<br><br>
-<input type="submit">
-</form>
-
-
-</body>
-</html>

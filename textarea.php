@@ -127,7 +127,9 @@ case 13:
         $username = "sgarcia";
         $password = "nu98pa34ss4r";
         $dbname = "db_psp";
-        $query="select fld_id, fld_trader from tbl_trader where fld_trader in ($fld_trader);";
+      //  $query="select fld_id, fld_trader from tbl_trader where fld_trader in ($fld_trader);";
+//	$query="select distinct fld_trader from tbl_trader where fld_trader in ($fld_trader);";
+	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
         $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
@@ -205,14 +207,13 @@ case "dropdown":
         mysql_connect($servername,$username,$password);
         mysql_select_db($dbname) or die( "Unable to select database");
 	$query="SELECT fld_trader from db_psp.tbl_trader;";
-	$elements=array($query);
-//         $result=mysql_query($query);
-	echo "<select name='Trader'>";
-        while($row = mysql_fetch_array($elements))
+	//$fld_id = "$_POST[fld_id]";
+	//$fld_trader = "$_POST[fld_trader]";
+        $result=mysql_query($query);
+	echo "<select name='Traders'>";
+        while($row = mysql_fetch_array($result))
         {
-          $fld_id=$row["fld_id"];
-          $fld_trader=$row["fld_trader"];
-        echo "<option value = $fld_id> $fld_trader</option>";
+        //echo "<option value=$fld_id>$fld_trader</option>";
         }
         echo"</select></td></tr>";
         break;
