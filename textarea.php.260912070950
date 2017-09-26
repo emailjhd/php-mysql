@@ -127,6 +127,8 @@ case 13:
         $username = "sgarcia";
         $password = "nu98pa34ss4r";
         $dbname = "db_psp";
+      //  $query="select fld_id, fld_trader from tbl_trader where fld_trader in ($fld_trader);";
+//	$query="select distinct fld_trader from tbl_trader where fld_trader in ($fld_trader);";
 	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
@@ -201,35 +203,19 @@ case "4textbox":
         break;
 
 case "dropdown":
-	$servername = "pm01tprmdb01v";
-	$username = "sgarcia";
-	$password = "nu98pa34ss4r";
-	$dbname = "db_psp";
-
-// Create database connection
-
-	mysql_connect($servername,$username,$password);
-	mysql_select_db($dbname) or die( "Unable to select database");
-
-
-
-	$query="select fld_id, fld_trader from tbl_trader order by fld_trader;";
-
-	$result=mysql_query($query);
-	echo "<select name='fld_id'>";
-
-	while($row = mysql_fetch_array($result))
-
-	{
-
-
-        echo "<option value=$fld_id>$fld_trader</option>";
-	$fld_trader=$row["fld_trader"];
-	echo "<option value='$fld_id'>$fld_trader</option>";
-
-	}
-
-	echo "</select>";
+        echo"<tr><td valign='top'>$Label</td><td><select name='Traders'>";
+        mysql_connect($servername,$username,$password);
+        mysql_select_db($dbname) or die( "Unable to select database");
+	$query="SELECT fld_trader from db_psp.tbl_trader;";
+	//$fld_id = "$_POST[fld_id]";
+	//$fld_trader = "$_POST[fld_trader]";
+        $result=mysql_query($query);
+	echo "<select name='Traders'>";
+        while($row = mysql_fetch_array($result))
+        {
+        //echo "<option value=$fld_id>$fld_trader</option>";
+        }
+        echo"</select></td></tr>";
         break;
 }
 echo"</table>";
@@ -237,6 +223,9 @@ echo"</table>";
         echo"<input type='Submit' />";
         echo"</form>";
 
+
+
 ?>
+
 </body>
 </html>
