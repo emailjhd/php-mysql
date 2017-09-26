@@ -127,11 +127,11 @@ case 13:
         $username = "sgarcia";
         $password = "nu98pa34ss4r";
         $dbname = "db_psp";
-	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
+// 	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
         $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
-	$dest="dropdown.php";
+	$dest="process.php";
         break;
 
 case 14:
@@ -201,10 +201,6 @@ case "4textbox":
         break;
 
 case "dropdown":
-	$servername = "pm01tprmdb01v";
-	$username = "sgarcia";
-	$password = "nu98pa34ss4r";
-	$dbname = "db_psp";
 
 // Create database connection
 
@@ -218,13 +214,14 @@ case "dropdown":
 	$result=mysql_query($query);
 	echo "<select name='fld_id'>";
 
-	while($row = mysql_fetch_array($result))
+	while($row = mysql_fetch_assoc($result))
 
 	{
 
 
-        echo "<option value=$fld_id>$fld_trader</option>";
+//        echo "<option value=$fld_id>$fld_trader</option>";
 	$fld_trader=$row["fld_trader"];
+	$fld_id=$row["fld_id"];
 	echo "<option value='$fld_id'>$fld_trader</option>";
 
 	}

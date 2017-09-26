@@ -90,12 +90,11 @@ case 12:
 
 case 13:
 	$dbname = "db_psp";
-        $fld_id_no = "$_POST[fld_id]";
-	$fld_trader = "$POST[fld_trader]";
-	$fld_trader_lnk = "$POST[fld_trader_lnk]";
+        $fld_id = "$_POST[fld_id]";
+//	echo "*".$fld_id."*";
         $header="Ad-Hoc Company Export";
-        $sql_header=array("Company Name", "Id");
-        $query="select fld_company_name, fld_id from tbl_company where fld_trader_lnk in (select fld_id from tbl_trader where fld_trader in ($fld_trader));";
+	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
+        $sql_header=array("Company Name", "GID");
         break;
 case 14: 
 	include 'correctexporttime.php';
@@ -112,7 +111,7 @@ case 15:
 
 }
 
-
+echo $query;
 
 mysql_connect($servername,$username,$password);
 mysql_select_db($dbname) or die( "Unable to select database");
