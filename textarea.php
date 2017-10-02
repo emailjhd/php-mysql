@@ -13,28 +13,44 @@ switch ($mode) {
 case 0:
 	$input="textarea";
         $header="Search for Scheduled MID Data";
+<<<<<<< HEAD
         $advice="Pre-Go Live Daily Checks - Verify Merchant data entered via AdminTool is correct";
+=======
+        $advice="CIAdmin schedule customers each day we use this data to search and export key fields to import into a spreadsheet that verifys the data entered via Admintool is correct (e.g. Account details are correct, MID is live, Natwest Company ID is correct, etc.)";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         $Label="MID list:";
         break;
 case 1:
 	$input="textarea";
         $header="Search for Scheduled Company Data";
+<<<<<<< HEAD
         $advice="Pre-Go Live Daily Checks - Verify GID data entered via AdminTool is correct";
+=======
+        $advice="CIAdmin schedule customers each day we use this data to search and export key fields to import into a spreadsheet that verifys the data entered via Admintool is correct e.g Export is enabled, the group is live etc...";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         $Label="GID list:";
         break;
 case 2:
 	$input="textarea";
 	$header="Search for Scheduled emails";
+<<<<<<< HEAD
         $advice="Pre-Go Live Daily Checks - Verify emials have been added for submission of daily reports";
+=======
+        $advice="CIAdmin schedule customers each day we use this data to search and export to ensure an email address has been supplied to send reports to";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
 	$Label="GID List:";
         break;
 case 3:
 	$input="textarea";
         $header="Clear Monitoring Flag";
+<<<<<<< HEAD
         $advice="Disable monitoring flag for new merchants that have gone live";
+=======
+        $advice="Once a merchant has gone live and everything is working correctly they no longer need to be monitored so the flag is disabled so they no longer appear on the daily settlement report";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
 	$Label="MID List:";
         break;
@@ -47,6 +63,7 @@ case 4:
         $dest="process.php";
 	$Label="MID List:";
         break;
+<<<<<<< HEAD
 case 18:
         $input="textarea";
         $header="Change Status Flag";
@@ -60,6 +77,12 @@ case 5:
 	$input="textarea";
 	$header="Ad-Hoc Merchant Exports";
 	$advice="Export Merchant data for specific GID(s)";
+=======
+case 5:
+	$input="textarea";
+	$header="Ad-Hoc Merchant Exports";
+	$advice="CIAdmin require a list of merchant numbers under a specfic GID for a project that is being worked on or a customer has requested the data so we lookup the Merchants using the GID and then export the data. This may also be done on multiple groups if needed for a Partner";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
 	$dest="process.php";
 	$Label="GID List:";
 	break;
@@ -69,16 +92,28 @@ case 6:
 	$label2="Old GID:";
 	$label3="New GID:";
 	$header="Move MIDS from one GID to another";
+<<<<<<< HEAD
 	$advice="Transfer MIDs from their current allocated GID to another";
+=======
+	$advice="If a customer decides that they want their merchants setup across multiple groups after CIAdmin have set them up under one group or CIADmin add a MID to the wrong group they need to be moved";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
       	$dest="process.php";
         break;
 
 case 7:
 	$input="textareatextbox";
+<<<<<<< HEAD
         $label2="New Merchant Capabilities:";
 	$Label="<b>MID List</b>";
         $header="Change Merchant Capabilities En Mass (By Merchant Number)";
         $advice="Update multiple MIDs 'Merchant Capabilities' flag. Once done raise a task to TSG to resync the EM database";
+=======
+//	$label1="Old Merchant Capabilities:";
+        $label2="New Merchant Capabilities:";
+	$Label="<b>MID List</b>";
+        $header="Change Merchant Capabilities En Mass (By Merchant Number)";
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         break;
 
@@ -88,7 +123,11 @@ case 8:
         $label2="New Merchant Capabilities:";
         $Label="<b>GID List</b>";
         $header="Change Merchant Capabilities En Mass (By Group)";
+<<<<<<< HEAD
         $advice="Update the 'Service Types' of all MIDs assigned to a group. Once done raise a task to TSG to resync the EM database";
+=======
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         break;
 
@@ -97,7 +136,11 @@ case 9:
         $label2="Service Type:";
         $Label="<b>MID List</b>";
         $header="Change Service Type En Mass (By Merchant Number)";
+<<<<<<< HEAD
         $advice="Update multiple MIDs 'Service Types'. Once done raise a task to TSG to resync the EM database";
+=======
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         break;
 
@@ -107,7 +150,11 @@ case 10:
         $label2="New Merchant Capabilities:";
         $Label="<b>GID List</b>";
         $header="Change Service Type En Mass (By Group)";
+<<<<<<< HEAD
         $advice="Update the 'Service Types' of all MIDs assigned to a group. Once done raise a task to TSG to resync the EM database";
+=======
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         break;
 
@@ -116,7 +163,11 @@ case 11:
         $label2="Card Accepted:";
         $Label="<b>MID List</b>";
         $header="Change Accepted Card Types En Mass (By Merchant Number)";
+<<<<<<< HEAD
         $advice="Update accepted cards on multiple MIDs";
+=======
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         break;
 
@@ -125,7 +176,11 @@ case 12:
         $label2="Card Accepted:";
         $Label="<b>GID List</b>";
         $header="Change Accepted Card Types En Mass (By Group)";
+<<<<<<< HEAD
         $advice="Update the accepted cards of all MIDs assigned to a group.";
+=======
+        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         break;
 
@@ -135,11 +190,19 @@ case 13:
         $username = "sgarcia";
         $password = "nu98pa34ss4r";
         $dbname = "db_psp";
+<<<<<<< HEAD
 // 	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
         $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
 	$dest="process.php";
+=======
+	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
+        $Label="<b>Partner List</b>";
+        $header="Ad-Hoc Company Export";
+        $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
+	$dest="dropdown.php";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         break;
 
 case 14:
@@ -152,12 +215,18 @@ case 14:
 
 case 15:
         $input="textarea";
+<<<<<<< HEAD
         $header="Transaction Counts Real Time";
         $advice="Do a count of transactions taken on specfic MIDs";
+=======
+        $header="Transaction Counts";
+        $advice="At the end of each week and\or month we run a query to count the number of transactions we have seen for installs that are still open on our schedule to see if they have been missed off reports";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
         $dest="process.php";
         $Label="<b>MID list:<b>";
         break;
 
+<<<<<<< HEAD
 case 16:
         $input="textbox";
         $header="Update Transaction Status for Export";
@@ -179,6 +248,8 @@ case 17:
         $label3="<b>Account Number:<b>";
         break;
 
+=======
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
 }
 
 
@@ -229,6 +300,7 @@ case "4textbox":
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
 
+<<<<<<< HEAD
 case "3textboxtextarea":
         echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
@@ -239,6 +311,13 @@ case "3textboxtextarea":
 
 
 case "dropdown":
+=======
+case "dropdown":
+	$servername = "pm01tprmdb01v";
+	$username = "sgarcia";
+	$password = "nu98pa34ss4r";
+	$dbname = "db_psp";
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
 
 // Create database connection
 
@@ -252,13 +331,22 @@ case "dropdown":
 	$result=mysql_query($query);
 	echo "<select name='fld_id'>";
 
+<<<<<<< HEAD
 	while($row = mysql_fetch_assoc($result))
+=======
+	while($row = mysql_fetch_array($result))
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
 
 	{
 
 
+<<<<<<< HEAD
 	$fld_trader=$row["fld_trader"];
 	$fld_id=$row["fld_id"];
+=======
+        echo "<option value=$fld_id>$fld_trader</option>";
+	$fld_trader=$row["fld_trader"];
+>>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
 	echo "<option value='$fld_id'>$fld_trader</option>";
 
 	}
