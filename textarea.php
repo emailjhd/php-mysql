@@ -13,28 +13,28 @@ switch ($mode) {
 case 0:
 	$input="textarea";
         $header="Search for Scheduled MID Data";
-        $advice="CIAdmin schedule customers each day we use this data to search and export key fields to import into a spreadsheet that verifys the data entered via Admintool is correct (e.g. Account details are correct, MID is live, Natwest Company ID is correct, etc.)";
+        $advice="Pre-Go Live Daily Checks - Verify Merchant data entered via AdminTool is correct";
         $dest="process.php";
         $Label="MID list:";
         break;
 case 1:
 	$input="textarea";
         $header="Search for Scheduled Company Data";
-        $advice="CIAdmin schedule customers each day we use this data to search and export key fields to import into a spreadsheet that verifys the data entered via Admintool is correct e.g Export is enabled, the group is live etc...";
+        $advice="Pre-Go Live Daily Checks - Verify GID data entered via AdminTool is correct";
         $dest="process.php";
         $Label="GID list:";
         break;
 case 2:
 	$input="textarea";
 	$header="Search for Scheduled emails";
-        $advice="CIAdmin schedule customers each day we use this data to search and export to ensure an email address has been supplied to send reports to";
+        $advice="Pre-Go Live Daily Checks - Verify emials have been added for submission of daily reports";
         $dest="process.php";
 	$Label="GID List:";
         break;
 case 3:
 	$input="textarea";
         $header="Clear Monitoring Flag";
-        $advice="Once a merchant has gone live and everything is working correctly they no longer need to be monitored so the flag is disabled so they no longer appear on the daily settlement report";
+        $advice="Disable monitoring flag for new merchants that have gone live";
         $dest="process.php";
 	$Label="MID List:";
         break;
@@ -47,10 +47,19 @@ case 4:
         $dest="process.php";
 	$Label="MID List:";
         break;
+case 18:
+        $input="textarea";
+        $header="Change Status Flag";
+        $advice="NursuryOnce a Natwest merchant has gone live as part of the Nursury file and it has been found to have no issues they are promoted to the live file
+";
+        $dest="process.php";
+        $Label="MID List:";
+        break;
+
 case 5:
 	$input="textarea";
 	$header="Ad-Hoc Merchant Exports";
-	$advice="CIAdmin require a list of merchant numbers under a specfic GID for a project that is being worked on or a customer has requested the data so we lookup the Merchants using the GID and then export the data. This may also be done on multiple groups if needed for a Partner";
+	$advice="Export Merchant data for specific GID(s)";
 	$dest="process.php";
 	$Label="GID List:";
 	break;
@@ -60,17 +69,16 @@ case 6:
 	$label2="Old GID:";
 	$label3="New GID:";
 	$header="Move MIDS from one GID to another";
-	$advice="If a customer decides that they want their merchants setup across multiple groups after CIAdmin have set them up under one group or CIADmin add a MID to the wrong group they need to be moved";
+	$advice="Transfer MIDs from their current allocated GID to another";
       	$dest="process.php";
         break;
 
 case 7:
 	$input="textareatextbox";
-//	$label1="Old Merchant Capabilities:";
         $label2="New Merchant Capabilities:";
 	$Label="<b>MID List</b>";
         $header="Change Merchant Capabilities En Mass (By Merchant Number)";
-        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
+        $advice="Update multiple MIDs 'Merchant Capabilities' flag. Once done raise a task to TSG to resync the EM database";
         $dest="process.php";
         break;
 
@@ -80,7 +88,7 @@ case 8:
         $label2="New Merchant Capabilities:";
         $Label="<b>GID List</b>";
         $header="Change Merchant Capabilities En Mass (By Group)";
-        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import or existing customers now need importing into EM and they have lots of merchants then we will update via the database";
+        $advice="Update the 'Service Types' of all MIDs assigned to a group. Once done raise a task to TSG to resync the EM database";
         $dest="process.php";
         break;
 
@@ -89,7 +97,7 @@ case 9:
         $label2="Service Type:";
         $Label="<b>MID List</b>";
         $header="Change Service Type En Mass (By Merchant Number)";
-        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+        $advice="Update multiple MIDs 'Service Types'. Once done raise a task to TSG to resync the EM database";
         $dest="process.php";
         break;
 
@@ -99,7 +107,7 @@ case 10:
         $label2="New Merchant Capabilities:";
         $Label="<b>GID List</b>";
         $header="Change Service Type En Mass (By Group)";
-        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+        $advice="Update the 'Service Types' of all MIDs assigned to a group. Once done raise a task to TSG to resync the EM database";
         $dest="process.php";
         break;
 
@@ -108,7 +116,7 @@ case 11:
         $label2="Card Accepted:";
         $Label="<b>MID List</b>";
         $header="Change Accepted Card Types En Mass (By Merchant Number)";
-        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+        $advice="Update accepted cards on multiple MIDs";
         $dest="process.php";
         break;
 
@@ -117,7 +125,7 @@ case 12:
         $label2="Card Accepted:";
         $Label="<b>GID List</b>";
         $header="Change Accepted Card Types En Mass (By Group)";
-        $advice="We try to avoid this as we have to raise a task to TSG to resync the EM database but if the wrong options have been selected during the AdminTool Mass import we will update via the database";
+        $advice="Update the accepted cards of all MIDs assigned to a group.";
         $dest="process.php";
         break;
 
@@ -144,10 +152,31 @@ case 14:
 
 case 15:
         $input="textarea";
-        $header="Transaction Counts";
-        $advice="At the end of each week and\or month we run a query to count the number of transactions we have seen for installs that are still open on our schedule to see if they have been missed off reports";
+        $header="Transaction Counts Real Time";
+        $advice="Do a count of transactions taken on specfic MIDs";
         $dest="process.php";
         $Label="<b>MID list:<b>";
+        break;
+
+case 16:
+        $input="textbox";
+        $header="Update Transaction Status for Export";
+        $advice="Normally a support task but where we are workingwith a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment";
+        $dest="process.php";
+        $label1="<b>Transaction ID:<b>";
+        break;
+
+
+
+case 17:
+        $input="3textboxtextarea";
+        $header="Change Account Details En Mass";
+        $advice="A customer may change bank account and if they have a large number of MIDs then rather than this be completed manually we will update via the database. The change can be the same details for all MIDs our differenet details for each MID or Group of MIDs";
+        $dest="process.php";
+        $Label="<b>MID List:<b>";
+	$label1="<b>Bank Code:<b>";
+        $label2="<b>Sort Code:<b>";
+        $label3="<b>Account Number:<b>";
         break;
 
 }
@@ -200,6 +229,15 @@ case "4textbox":
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
 
+case "3textboxtextarea":
+        echo"<tr><td valign='top'>$Label</td>";
+        echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
+        echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
+        echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
+	echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
+        break;
+
+
 case "dropdown":
 
 // Create database connection
@@ -219,7 +257,6 @@ case "dropdown":
 	{
 
 
-//        echo "<option value=$fld_id>$fld_trader</option>";
 	$fld_trader=$row["fld_trader"];
 	$fld_id=$row["fld_id"];
 	echo "<option value='$fld_id'>$fld_trader</option>";

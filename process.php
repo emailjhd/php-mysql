@@ -29,6 +29,7 @@ switch ($mode) {
 case 0:
 	$dbname = "db_ccardcfg";
 	$fld_merchant_no = "$_POST[fld_id]";
+	$fld_merchant_no = mysql_real_escape_string($fld_merchant_no);
 	$header="Search for Scheduled MID data";
 	$sql_header=array("Merchant Number", "Amex Merchant", "Diners Merchant", "Bank Code", "Account Number", "Sort Code", "Company ID", "TID", "Merchant Type", "Auto TID", "Status", "Multiple Currency", "Monitored", "Group ID");
 	$query="SELECT `fld_merchant_no`,`fld_amex_merchant`,`fld_diners_merchant`,`fld_bank_code`,`fld_account_no`,`fld_sort_code`,`fld_company_id`,`fld_tid`,`fld_merchant_type`,`fld_auto_tid`,`fld_status` , `fld_multiple_cur` ,`fld_monitored`,`fld_groupid` FROM `tbl_merchant` WHERE fld_merchant_no in ($fld_merchant_no)  OR fld_amex_merchant in ($fld_merchant_no) OR fld_diners_merchant in  ($fld_merchant_no);";
@@ -53,6 +54,9 @@ case 3:
 case 4:
 	include 'resetflag.php';
         break;
+case 18:
+	include 'changeflag.php';
+	break;
 case 5:
         $dbname = "db_ccardcfg";
         $fld_groupid = "$_POST[fld_id]";
@@ -94,7 +98,7 @@ case 13:
 //	echo "*".$fld_id."*";
         $header="Ad-Hoc Company Export";
 	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
-        $sql_header=array("Company Name", "GID");
+        $sql_header=array("GID", "Company Name");
         break;
 case 14: 
 	include 'correctexporttime.php';
@@ -104,14 +108,19 @@ case 15:
         $dbname = "db_ccard";
         $header="Transaction Counts";
         $fld_merchant_no = "$_POST[fld_id]";
-        $sql_header=array("Merchant Number", "Transaction IDs");
+        $sql_header=array("Merchant Number", "Number of Transaction IDs");
         $query="select fld_merchant_no, count(fld_tran_id) from tbl_ccard_hash where fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no;";
         break;
-
+case 16:
+	include 'updatetransaction.php';
+	break;
+case 17:
+        include 'updateaccountdetailsenmass.php';
+        break;
 
 }
 
-echo $query;
+//echo $query;
 
 mysql_connect($servername,$username,$password);
 mysql_select_db($dbname) or die( "Unable to select database");
