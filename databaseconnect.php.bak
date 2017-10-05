@@ -1,0 +1,22 @@
+<?php
+
+$servername = "pm01tprmdb01v";
+$username = "sgarcia";
+$password = "nu98pa34ss4r";
+$dbname = "db_ccardcfg";
+
+mysql_connect("$servername",$username,$password);
+mysql_select_db($dbname) or die( "Unable to select database");
+
+$query= "SELECT * FROM tbl_merchant where fld_id = 65017";
+
+$result=mysql_query($query);
+
+    while($row = mysql_fetch_array($result))
+    {
+    echo '<p>'.$row['fld_groupid'].' </p>';
+    }
+
+mysql_close();
+
+?>
