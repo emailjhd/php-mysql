@@ -158,15 +158,22 @@ case 15:
 
 case 16:
         $input="textbox";
-        $header="Update Transaction Status for Export";
+        $header="Update Transaction Status for Export (SUCCESS)";
         $advice="Normally a support task but where we are workingwith a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment";
         $dest="process.php";
         $label1="<b>Transaction ID:<b>";
         break;
 
-
-
 case 17:
+        $input="textbox";
+        $header="Update Transaction Status for Export (FAILURE)";
+        $advice="Normally a support task but where we are workingwith a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment";
+        $dest="process.php";
+        $label1="<b>Transaction IDs:<b>";
+        break;
+
+
+case 19:
         $input="3textboxtextarea";
         $header="Change Account Details En Mass";
         $advice="A customer may change bank account and if they have a large number of MIDs then rather than this be completed manually we will update via the database. The change can be the same details for all MIDs our differenet details for each MID or Group of MIDs";
@@ -176,7 +183,7 @@ case 17:
         $label2="<b>Sort Code:<b>";
         $label3="<b>Account Number:<b>";
         break;
-case 19:
+case 20:
         $input="textarea";
         $header="Morning Count Transaction Check";
         $advice="Morning Count Transaction Check";

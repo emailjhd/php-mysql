@@ -119,20 +119,25 @@
 
 <tr><th><form action="textarea.php" method="post">
 <input type="hidden" name="mode" value="16">
-<button type= "submit">Update Status for Export</button>
+<button type= "submit">Update Status for Export (SUCCESS)</button>
 </form></th><td><b><i>Normally a support task but where we are working with a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment</i>
 </td></tr>
 
-
 <tr><th><form action="textarea.php" method="post">
 <input type="hidden" name="mode" value="17">
+<button type= "submit">Update Status for Export (FAILURE)</button>
+</form></th><td><b><i>Normally a support task but where we are working with a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="19">
 <button type= "submit">Change Account Details En Mass</button>
 </form></th><td><b><i>A customer may change bank account and if they have a large number of MIDs then rather than this be completed manually we will update via the database. The change can be the same details for all MIDs our differenet details for each MID or Group of MIDs</i>
 </td></tr>
 
 
 <tr><th><form action="textarea.php" method="post">
-<input type="hidden" name="mode" value="19">
+<input type="hidden" name="mode" value="20">
 <button type= "submit">Morning Check Transaction Count</button>
 </form></th><td><b><i>Morning check transaction count</i>
 </td></tr>

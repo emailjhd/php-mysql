@@ -104,16 +104,19 @@ case 15:
         $query="select fld_merchant_no, count(fld_tran_id) from tbl_ccard_hash where fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no;";
         break;
 case 16:
-	include 'updatetransaction.php';
+	include 'updatetransactionsuccess.php';
 	break;
 case 17:
+        include 'updatetransactionfailure.php';
+        break;
+case 19:
         include 'updateaccountdetailsenmass.php';
         break;
 
         $sql_header=array("Merchant Number", "Transaction IDs");
         $query="select fld_merchant_no, count(fld_tran_id) from tbl_ccard_hash where fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no;";
         break;
-case 19:
+case 20:
         $dbname = "db_ccard";
         $header="Morning check transaction count";
         $fld_merchant_no = "$_POST[fld_id]";
