@@ -153,7 +153,6 @@ echo "<!docttype html> <head> <meta charset='utf-8'> <link rel='stylesheet' href
 echo " <body> ";
 include 'toolbar.php';
 
-
 //connect to database
 if ($debug > 0 ) {
       echo"Credentials:".$servername."!".$username."!".$password;
@@ -197,4 +196,3 @@ mysql_close();
 echo "<a href='csv.php'>export to CSV</a>
 </body></html>";
 ?>
-<a href='Logout.php'>Logout</a>

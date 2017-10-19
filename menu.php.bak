@@ -1,0 +1,117 @@
+<!doctype html
+<html>
+<body>
+<h3> CI Tech search pages</h3>
+
+<table border=2>
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="0">
+<button type= "submit">Search for Scheduled MID Data</button>
+</form></th><td><b><i>Pre-Go Live Daily Checks - Verify Merchant data entered via AdminTool is correct</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="1">
+<button type= "submit">Search for Scheduled Company Data</button>
+</form></th><td><b><i>Pre-Go Live Daily Checks - Verify GID data entered via AdminTool is correct</b></i>
+</td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="2">
+<button type= "submit">Search for Scheduled Emails</button>
+</form></th><td><b><i>Pre-Go Live Daily Checks - Verify emials have been added for submission of daily reports</b></i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="3">
+<button type= "submit">Clear Monitoring Flag</button>
+</form></th><td><b><i>Disable monitoring flag for new merchants that have gone live</b></i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="4">
+<button type= "submit">Set Monitoring Flag</button>
+</form></th><td><b><i>Set the monitoring flag on merchant numbers that need to be monitored</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="18">
+<button type= "submit">Clear Nursery Flag</button>
+</form></th><td><b><i>Clear Nursery Flag</i>
+</td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="5">
+<button type= "submit">Ad-Hoc Merchant Exports</button>
+</form></th><td><b><i>Export Merchant data for specific GID(s)</i>
+</td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="6">
+<button type= "submit">Move MIDS from one GID to another</button>
+</form></th><td><b><i>Transfer MIDs from their current allocated GID to another</i>
+</td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="7">
+<button type= "submit">Change Merchant setting En Mass(By Merchant Number)</button>
+</form></th><td><b><i>Update multiple MIDs 'Merchant Capabilities' flag. Once done raise a task to TSG to resync the EM database</i>
+</td></tr>
+
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="8">
+<button type= "submit">Change Merchant setting En Mass(By Group)</button>
+</form></th><td><b><i>Update the 'Service Types' of all MIDs assigned to a group. Once done raise a task to TSG to resync the EM database</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="13">
+<button type= "submit">Ad-Hoc Company Export</button>
+</form></th><td><b><i>Export all companies assigned to a specfic Partner</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="14">
+<button type= "submit">Correct Export Times</button>
+</form></th><td><b><i>When a customer changes their export times via MIS the fld_last_export is not reset so if we do not update manually the next export run does not execute</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="15">
+<button type= "submit">Transaction Counts Real Time</button>
+</form></th><td><b><i>Do  a count of transactions taken on specfic MIDs</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="16">
+<button type= "submit">Update Status for Export (SUCCESS)</button>
+</form></th><td><b><i>Normally a support task but where we are working with a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="17">
+<button type= "submit">Update Status for Export (FAILURE)</button>
+</form></th><td><b><i>Normally a support task but where we are working with a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="19">
+<button type= "submit">Change Account Details En Mass</button>
+</form></th><td><b><i>A customer may change bank account and if they have a large number of MIDs then rather than this be completed manually we will update via the database. The change can be the same details for all MIDs our different details for each MID or Group of MIDs</i>
+</td></tr>
+
+<tr><th><form action="textarea.php" method="post">
+<input type="hidden" name="mode" value="20">
+<button type= "submit">Morning Check Transaction Count</button>
+</form></th><td><b><i>Morning check transaction count</i>
+</td></tr>
+
+</table>
+
+</body>
+</html>

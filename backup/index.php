@@ -11,7 +11,7 @@ mysql_select_db($dbname) or die( "Please enter the correct credentials...");
 $_SESSION['username']=$username;
 $_SESSION['password']=$password;
 $_SESSION['auth1frg34']=rand()*100;
-include 'menu.php';
+include 'index.html';
 } else {
   echo " 
 <form action='index.php' method='post' autocomplete='no'>

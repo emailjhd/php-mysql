@@ -1,0 +1,157 @@
+
+# Start yum configuration 
+wget "http://tns-cobbler-bris.tse.int/cblr/svc/op/yum/profile/RHEL-6u2-x86_64" --output-document=/etc/yum.repos.d/cobbler-config.repo
++ wget http://tns-cobbler-bris.tse.int/cblr/svc/op/yum/profile/RHEL-6u2-x86_64 --output-document=/etc/yum.repos.d/cobbler-config.repo
+--2014-03-07 18:53:07--  http://tns-cobbler-bris.tse.int/cblr/svc/op/yum/profile/RHEL-6u2-x86_64
+Resolving tns-cobbler-bris.tse.int... 172.17.77.102
+Connecting to tns-cobbler-bris.tse.int|172.17.77.102|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 597 [text/plain]
+Saving to: `/etc/yum.repos.d/cobbler-config.repo'
+
+     0K                                                       100%  108M=0s
+
+2014-03-07 18:53:10 (108 MB/s) - `/etc/yum.repos.d/cobbler-config.repo' saved [597/597]
+
+
+# End yum configuration
+
+
+
+# Start post_install_network_config generated code
+# End post_install_network_config generated code
+
+
+
+
+# Start download cobbler managed config files (if applicable)
+# End download cobbler managed config files (if applicable)
+
+# Start koan environment setup
+echo "export COBBLER_SERVER=tns-cobbler-bris.tse.int" > /etc/profile.d/cobbler.sh
++ echo 'export COBBLER_SERVER=tns-cobbler-bris.tse.int'
+echo "setenv COBBLER_SERVER tns-cobbler-bris.tse.int" > /etc/profile.d/cobbler.csh
++ echo 'setenv COBBLER_SERVER tns-cobbler-bris.tse.int'
+# End koan environment setup
+
+# begin Red Hat management server registration
+# not configured to register to any Red Hat management server (ok)
+# end Red Hat management server registration
+
+# Begin cobbler registration
+if [ -f "/usr/bin/cobbler-register" ]; then
+    cobbler-register --server=tns-cobbler-bris.tse.int --fqdn '*AUTO*' --profile=RHEL-6u2-x86_64 --batch
+fi
++ '[' -f /usr/bin/cobbler-register ']'
+# End cobbler registration
+
+# Create the standard banner
+echo "**** WARNING ****
+
+AUTHORISED USERS ONLY!
+The information on this computer and network is the intellectual property of a
+private corporation and is protected by intellectual property rights. You must
+be assigned an account on this computer to access information and are only
+allowed to access information as defined by the system administrators. Your
+activities may be monitored. Use of this computer implies consent to monitoring.
+
+" > /etc/motd
++ echo '**** WARNING ****
+
+AUTHORISED USERS ONLY!
+The information on this computer and network is the intellectual property of a
+private corporation and is protected by intellectual property rights. You must
+be assigned an account on this computer to access information and are only
+allowed to access information as defined by the system administrators. Your
+activities may be monitored. Use of this computer implies consent to monitoring.
+
+'
+
+perl -pi -e 's/#PUPPET_SERVER=puppet/PUPPET_SERVER=tns-puppet01-bris.tse.int/i' /etc/sysconfig/puppet
++ perl -pi -e s/#PUPPET_SERVER=puppet/PUPPET_SERVER=tns-puppet01-bris.tse.int/i /etc/sysconfig/puppet
+
+chkconfig --add puppet
++ chkconfig --add puppet
+chkconfig puppet on
++ chkconfig puppet on
+
+
+#!/bin/sh
+
+if [ -f /usr/sbin/authconfig ]; then
+ /usr/sbin/authconfig --enablemkhomedir --update
+fi
++ '[' -f /usr/sbin/authconfig ']'
++ /usr/sbin/authconfig --enablemkhomedir --update
+Starting nslcd: [60G[[0;32m  OK  [0;39m]
+echo "mfleming built this nasty hack for pre-puppeted boxes" >> /etc/pam_ldap.conf
++ echo 'mfleming built this nasty hack for pre-puppeted boxes'
+echo "nss_base_passwd cn=users,cn=accounts,dc=tse,dc=int?sub" >> /etc/pam_ldap.conf
++ echo 'nss_base_passwd cn=users,cn=accounts,dc=tse,dc=int?sub'
+##!/bin/bash
+
+if [ ! -e /lib/modules/`uname -r`/misc/.vmware_installed ]; then
+        /usr/bin/vmware-config-tools.pl --default
+        touch /lib/modules/`uname -r`/misc/.vmware_installed
+fi
+uname -r
+++ uname -r
++ '[' '!' -e /lib/modules/2.6.32-220.el6.x86_64/misc/.vmware_installed ']'
++ /usr/bin/vmware-config-tools.pl --default
+/tmp/ks-script-kHBznO: line 63: /usr/bin/vmware-config-tools.pl: No such file or directory
+uname -r
+++ uname -r
++ touch /lib/modules/2.6.32-220.el6.x86_64/misc/.vmware_installed
+touch: cannot touch `/lib/modules/2.6.32-220.el6.x86_64/misc/.vmware_installed': No such file or directory
+
+
+# Enable post-install boot notification
+
+wget -O /usr/local/sbin/anamon "http://tns-cobbler-bris.tse.int:80/cobbler/aux/anamon"
++ wget -O /usr/local/sbin/anamon http://tns-cobbler-bris.tse.int:80/cobbler/aux/anamon
+--2014-03-07 18:53:10--  http://tns-cobbler-bris.tse.int/cobbler/aux/anamon
+Resolving tns-cobbler-bris.tse.int... 172.17.77.102
+Connecting to tns-cobbler-bris.tse.int|172.17.77.102|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8638 (8.4K) [text/plain]
+Saving to: `/usr/local/sbin/anamon'
+
+     0K ........                                              100%  451M=0s
+
+2014-03-07 18:53:10 (451 MB/s) - `/usr/local/sbin/anamon' saved [8638/8638]
+
+wget -O /etc/rc.d/init.d/anamon "http://tns-cobbler-bris.tse.int:80/cobbler/aux/anamon.init"
++ wget -O /etc/rc.d/init.d/anamon http://tns-cobbler-bris.tse.int:80/cobbler/aux/anamon.init
+--2014-03-07 18:53:10--  http://tns-cobbler-bris.tse.int/cobbler/aux/anamon.init
+Resolving tns-cobbler-bris.tse.int... 172.17.77.102
+Connecting to tns-cobbler-bris.tse.int|172.17.77.102|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2004 (2.0K) [text/plain]
+Saving to: `/etc/rc.d/init.d/anamon'
+
+     0K .                                                     100% 19.6M=0s
+
+2014-03-07 18:53:10 (19.6 MB/s) - `/etc/rc.d/init.d/anamon' saved [2004/2004]
+
+
+chmod 755 /etc/rc.d/init.d/anamon /usr/local/sbin/anamon
++ chmod 755 /etc/rc.d/init.d/anamon /usr/local/sbin/anamon
+test -d /selinux && restorecon /etc/rc.d/init.d/anamon /usr/local/sbin/anamon
++ test -d /selinux
++ restorecon /etc/rc.d/init.d/anamon /usr/local/sbin/anamon
+
+chkconfig --add anamon
++ chkconfig --add anamon
+
+cat << __EOT__ > /etc/sysconfig/anamon
+COBBLER_SERVER="tns-cobbler-bris.tse.int"
+COBBLER_PORT="80"
+COBBLER_NAME="RHEL-6u2-x86_64"
+LOGFILES="/var/log/boot.log /var/log/messages /var/log/dmesg"
+__EOT__
++ cat
+
+
+# Start final steps
+$kickstart_done
+# End final steps

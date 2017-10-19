@@ -1,74 +1,66 @@
-<?php
+<!-- //* <?php
 
-// login.php
+// index.php
 
-
-$user = $_POST['user'];
-$password = $_POST['password'];
- ob_start();
-  require_once 'home.php';
+//$user = $_POST['user'];
+//$password = $_POST['password'];
+// ob_start();
  
-if ( isset($_SESSION['user'])!="" ) {
-  exit;
-}
+//if ( isset($_SESSION['user'])!="" ) {
+//  exit;
+//}
 
-$error = false;
-
-$servername = "pm01tprmdb01v";
-$username = "sgarcia";
-$password = "nu98pa34ss4r";
-$dbname = "mysql";
-
-
+//$error = false;
+//$servername = "pm01tprmdb01v";
+//$username = "sgarcia";
+//$password = "nu98pa34ss4r";
+//$dbname = "mysql";
 
 // Create database connection
 
 
-mysql_connect($servername,$username,$password);
-mysql_select_db($dbname) or die( "Unable to select database");
+//mysql_connect($servername,$username,$password);
+//mysql_select_db($dbname) or die( "Unable to select database");
 
 
  // it will never let you open index(login) page if session is set
 
-
- 
- 
+// if(empty($user)){
+//$error = true;
+  // $userError = "Please enter your username.";
+//} else {
+//$user = true;
+ // }
   
-  
- if(empty($user)){
-$error = true;
-   $userError = "Please enter your username.";
-} else {
-$user = true;
-  }
-  
-  if(empty($password)){
-   $error = true;
-   $passError = "Please enter your password.";
-  } else {
-$passError = "";
-}
+ // if(empty($password)){
+  // $error = true;
+  // $passError = "Please enter your password.";
+  //} else {
+//$passError = "";
+//}
   
    
 // if there's no error, continue to login
-  if (!$error) {
+ // if (!$error) {
    
-   $password = hash('sha256', $password); // password hashing using SHA256
+  /// $password = hash('sha256', $password); // password hashing using SHA256
 
 
-   $res=mysql_query("SELECT user, password FROM user where user = 'sgarcia'");
-   $row=mysql_fetch_array($res);
-   $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
+  // $res=mysql_query("SELECT user, password FROM user where user = 'sgarcia'");
+  // $row=mysql_fetch_array($res);
+  // $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
    
-   if( $count == 1 && $row['password']==$password ) {
-    $_SESSION['user'] = $row['user'];
-  $errMSG = "";
-   } else {
-    $errMSG = "Incorrect Credentials, Try again...";
-   }
+ //  if( $count == 1 && $row['password']==$password ) {
+   // $_SESSION['user'] = $row['user'];
+  //$errMSG = "";
+  // } else {
+  //  $errMSG = "Incorrect Credentials, Try again...";
+  // }
     
-  }
-?>
+  //}
+//?>   -->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,4 +126,4 @@ $passError = "";
 
 </body>
 </html>
-<?php ob_end_flush(); ?>
+ <!-- // <?php ob_end_flush(); ?> -->

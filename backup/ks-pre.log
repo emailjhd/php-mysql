@@ -1,0 +1,50 @@
+
+# Once root's homedir is there, copy over the log.
+while : ; do
+    sleep 10
+    if [ -d /mnt/sysimage/root ]; then
+        cp /tmp/ks-pre.log /mnt/sysimage/root/
+        logger "Copied %pre section log to system"
+        break
+    fi
+done &
+
+$kickstart_start
+
+# Enable installation monitoring
+wget -O /tmp/anamon "http://tns-cobbler-bris.tse.int:80/cobbler/aux/anamon"
++ wget -O /tmp/anamon http://tns-cobbler-bris.tse.int:80/cobbler/aux/anamon
++ :
++ sleep 10
+--2014-03-07 18:48:05--  http://tns-cobbler-bris.tse.int/cobbler/aux/anamon
+Resolving tns-cobbler-bris.tse.int... 172.17.77.102
+Connecting to tns-cobbler-bris.tse.int|172.17.77.102|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8638 (8.4K) [text/plain]
+Saving to: `/tmp/anamon'
+
+     0K ........                                              100%  159M=0s
+
+2014-03-07 18:48:05 (159 MB/s) - `/tmp/anamon' saved [8638/8638]
+
+python /tmp/anamon --name "RHEL-6u2-x86_64" --server "tns-cobbler-bris.tse.int" --port "80"
++ python /tmp/anamon --name RHEL-6u2-x86_64 --server tns-cobbler-bris.tse.int --port 80
+
+
++ '[' -d /mnt/sysimage/root ']'
++ :
++ sleep 10
++ '[' -d /mnt/sysimage/root ']'
++ :
++ sleep 10
++ '[' -d /mnt/sysimage/root ']'
++ :
++ sleep 10
++ '[' -d /mnt/sysimage/root ']'
++ :
++ sleep 10
++ '[' -d /mnt/sysimage/root ']'
++ :
++ sleep 10
++ '[' -d /mnt/sysimage/root ']'
++ cp /tmp/ks-pre.log /mnt/sysimage/root/

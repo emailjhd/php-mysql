@@ -5,8 +5,9 @@
 <a href="index.html">Home Page</a>
 <?php
 
-include 'common.php';
-$mode = $_POST['mode'];
+
+$mode = $_POST[mode];
+//        echo "i equals $mode";
 
 switch ($mode) {
 case 0:
@@ -37,17 +38,20 @@ case 3:
         $dest="process.php";
 	$Label="MID List:";
         break;
+
 case 4:
 	$input="textarea";
         $header="Set Status Flag";
-        $advice="Set the monitoring flag on merchant numbers that need to be monitored";
+        $advice="NursuryOnce a Natwest merchant has gone live as part of the Nursury file and it has been found to have no issues they are promoted to the live file
+";
         $dest="process.php";
 	$Label="MID List:";
         break;
 case 18:
         $input="textarea";
-        $header="Clear Nursery Flag";
-        $advice="Clear Nursery Flag";
+        $header="Change Status Flag";
+        $advice="NursuryOnce a Natwest merchant has gone live as part of the Nursury file and it has been found to have no issues they are promoted to the live file
+";
         $dest="process.php";
         $Label="MID List:";
         break;
@@ -70,12 +74,11 @@ case 6:
         break;
 
 case 7:
-	$input="textareatextboxdrop";
-        $label2="New Value:";
-        $label3="Applied against:";
+	$input="textareatextbox";
+        $label2="New Merchant Capabilities:";
 	$Label="<b>MID List</b>";
-        $header="Change Merchant settings En Mass (By MID)";
-        $advice="Update multiple MIDs for specific values. Once done raise a task to TSG to resync the EM database";
+        $header="Change Merchant Capabilities En Mass (By Merchant Number)";
+        $advice="Update multiple MIDs 'Merchant Capabilities' flag. Once done raise a task to TSG to resync the EM database";
         $dest="process.php";
         break;
 
@@ -128,12 +131,17 @@ case 12:
 
 case 13:
         $input="dropdown";
+        $servername = "pm01tprmdb01v";
+        $username = "sgarcia";
+        $password = "nu98pa34ss4r";
         $dbname = "db_psp";
+// 	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
         $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
 	$dest="process.php";
         break;
+
 case 14:
         $input="textarea";
         $header="Correct Export Times";
@@ -149,21 +157,18 @@ case 15:
         $dest="process.php";
         $Label="<b>MID list:<b>";
         break;
+
 case 16:
         $input="textbox";
-        $header="Update Transaction Status for Export (SUCCESS)";
+        $header="Update Transaction Status for Export";
         $advice="Normally a support task but where we are workingwith a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment";
         $dest="process.php";
         $label1="<b>Transaction ID:<b>";
         break;
+
+
+
 case 17:
-        $input="textbox";
-        $header="Update Transaction Status for Export (FAILURE)";
-        $advice="Normally a support task but where we are workingwith a customer if we need to release pending transactions or want to stop a transaction from exporting we will update the fld_authorised and fld_payment";
-        $dest="process.php";
-        $label1="<b>Transaction IDs:<b>";
-        break;
-case 19:
         $input="3textboxtextarea";
         $header="Change Account Details En Mass";
         $advice="A customer may change bank account and if they have a large number of MIDs then rather than this be completed manually we will update via the database. The change can be the same details for all MIDs our differenet details for each MID or Group of MIDs";
@@ -173,14 +178,9 @@ case 19:
         $label2="<b>Sort Code:<b>";
         $label3="<b>Account Number:<b>";
         break;
-case 20:
-        $input="textarea";
-        $header="Morning Count Transaction Check";
-        $advice="Morning Count Transaction Check";
-        $dest="process.php";
-        $Label="<b>MID list:<b>";
-        break;
+
 }
+
 
 echo"<h3>$header</h3>";
 echo"<p>$advice</p>";
@@ -192,43 +192,43 @@ case "textarea":
 	echo"<tr><td valign='top'>$Label</td>";
 	echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
 	break;
+
 case "textbox":
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	break;
+
 case "2textbox":
 	echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id3' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
-case "textareatextboxdrop":
-        echo"<tr><td valign='top'>$Label</td>";
-        echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
-        echo"<tr><td>$label2</td><td><input type='text' name='fld_id1'></td></tr>";
-        echo"<tr><td>$label3</td><td><select name='fld_id3'><option value='fld_merchant_capabilities'>Merchant Capabilities</option>";
-        echo"<option value='fld_service_type'>Service Types</option><option value='fld_card_accepted'>Card Types</options></select></td></tr>";
-        break;
+
 case "textareatextbox":
         echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id1'></td></tr>";
         break;
+
 case "3textbox":
 	echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
 	echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
 	break;
+
 case "textboxandtextarea":
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
         break;
+
 case "4textbox":
 	echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
+
 case "3textboxtextarea":
         echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
@@ -236,23 +236,37 @@ case "3textboxtextarea":
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
 	echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
         break;
+
+
 case "dropdown":
+
 // Create database connection
+
 	mysql_connect($servername,$username,$password);
 	mysql_select_db($dbname) or die( "Unable to select database");
+
+
+
 	$query="select fld_id, fld_trader from tbl_trader order by fld_trader;";
+
 	$result=mysql_query($query);
 	echo "<select name='fld_id'>";
-	while($row = mysql_fetch_assoc($result)) {
-	    $fld_trader=$row["fld_trader"];
-	    $fld_id=$row["fld_id"];
-	    echo "<option value='$fld_id'>$fld_trader</option>";
-	  }
+
+	while($row = mysql_fetch_assoc($result))
+
+	{
+
+
+	$fld_trader=$row["fld_trader"];
+	$fld_id=$row["fld_id"];
+	echo "<option value='$fld_id'>$fld_trader</option>";
+
+	}
+
 	echo "</select>";
         break;
 }
-
-        echo"</table>";
+echo"</table>";
         echo"<input type='hidden' name='mode' value='$mode'>";
         echo"<input type='Submit' />";
         echo"</form>";

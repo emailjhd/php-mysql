@@ -1,79 +1,32 @@
 <?php
 
-// login.php
-
-
-$user = $_POST['user'];
-$password = $_POST['password'];
- ob_start();
-  require_once 'home.php';
- 
-if ( isset($_SESSION['user'])!="" ) {
-  exit;
-}
-
-$error = false;
-
-$servername = "pm01tprmdb01v";
-$username = "sgarcia";
-$password = "nu98pa34ss4r";
-$dbname = "mysql";
-
-
-
-// Create database connection
-
-
+if ($_SESSION['auth1frg34'] > 0) {
+if (isset($_post['user'])) {
+$username=$_post['user'];
+$password=$_post['password'];
 mysql_connect($servername,$username,$password);
 mysql_select_db($dbname) or die( "Unable to select database");
-
-
- // it will never let you open index(login) page if session is set
-
-
- 
- 
-  
-  
- if(empty($user)){
-$error = true;
-   $userError = "Please enter your username.";
+$_SESSION['user']=$username;
+$_SESSION['password']=$password;
+$_SESSION['auth1frg34']=random()*100;
+include menu.php
 } else {
-$user = true;
-  }
-  
-  if(empty($password)){
-   $error = true;
-   $passError = "Please enter your password.";
-  } else {
-$passError = "";
-}
-  
-   
-// if there's no error, continue to login
-  if (!$error) {
-   
-   $password = hash('sha256', $password); // password hashing using SHA256
+<form action="login.php method="post" autocomplete="no">
+Username <input name="user" type="text">
+Password <input name="password" type="password">
+<input type="submit">
+</form>
+	    }
+	  }
 
 
-   $res=mysql_query("SELECT user, password FROM user where user = 'sgarcia'");
-   $row=mysql_fetch_array($res);
-   $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
-   
-   if( $count == 1 && $row['password']==$password ) {
-    $_SESSION['user'] = $row['user'];
-  $errMSG = "";
-   } else {
-    $errMSG = "Incorrect Credentials, Try again...";
-   }
-    
-  }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login Page</title>
+<title>Login</title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -82,34 +35,44 @@ $passError = "";
 <div class="container">
 
  <div id="login-form">
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+<!--     <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off"> -->
     
      <div class="col-md-12">
         
          <div class="form-group">
-             <h2 class="">Sign In to CI Tech Query Pages</h2>
+		<form class="form-signin" name="form1" method="post" action="checklogin.php">
+             <h2 class="">CI Tech Query Pages.</h2>
             </div>
         
          <div class="form-group">
              <hr />
             </div>
+            
+            <?php
+   if ( isset($errMSG) ) {
+    
+    ?>
     <div class="form-group">
              <div class="alert alert-danger">
     <span class="glyphicon glyphicon-info-sign"></span> <?php echo $errMSG; ?>
                 </div>
              </div>
+                <?php
+   }
+   ?>
+            
             <div class="form-group">
              <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-             <input type="text" name="$user" class="form-control" placeholder="Your Username" value="<?php echo $user; ?>" maxlength="20" />
+             <input type="user" name="user" class="form-control" placeholder="Your Username"  maxlength="40" />
                 </div>
-   <!--             <span class="text-danger"><?php echo $userError; ?></span> -->
+                <span class="text-danger"><?php echo $user; ?></span>
             </div>
             
             <div class="form-group">
              <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-             <input type="password" name="$password" class="form-control" placeholder="Your Password" maxlength="15" />
+             <input type="password" name="password" class="form-control" placeholder="Your Password" maxlength="15" />
                 </div>
                 <span class="text-danger"><?php echo $passError; ?></span>
             </div>
@@ -121,15 +84,17 @@ $passError = "";
             <div class="form-group">
              <button type="submit" class="btn btn-block btn-primary" name="btn-login">Sign In</button>
             </div>
+            
             <div class="form-group">
              <hr />
             </div>
-            <div class="form-group">
-            </div>
+            
+        
         </div>
    
     </form>
     </div> 
+
 </div>
 
 </body>
