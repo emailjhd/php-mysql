@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # mysql-project
 =======
 # Mastecard Payment Gateway Services Retail Platform - Retail Authorisation Demo
@@ -13,3 +14,6 @@ put introduction here
 =======
 # mysql-project
 >>>>>>> 04e9115ed2bc211763254c34a3cb4993db9988cf
+=======
+# mysql-project
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8

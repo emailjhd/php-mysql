@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 // login.php
@@ -135,3 +136,87 @@ $passError = "";
 </body>
 </html>
 <?php ob_end_flush(); ?>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+label{display:inline-block;width:100px;margin-bottom:10px;}
+</style>
+ 
+ 
+<title>Run Query for Merchant Table</title>
+</head>
+<body>
+<h1>Query Result from Merchant Table</h1> 
+<form action="tbl_company.php" method="post">
+<label>Merchant Number</label>
+<input type="text" name="fld_merchant_no" />
+<br />
+<label>Amex Merchant</label>
+<input type="text" name="fld_amex_merchant" />
+<br />
+<label>Diners Merchant</label>
+<input type="text" name="fld_diners_merchant" />
+<br />
+<label>Bank Code</label>
+<input type="text" name="fld_bank_code" />
+ 
+<br />
+<label>Account Number</label>
+<input type="text" name="fld_account_no" />
+
+<br />
+<label>Sort Code</label>
+<input type="text" name="fld_sort_code" />
+
+<br />
+<label>Bank Code</label>
+<input type="text" name="fld_sort_code" />
+
+<br />
+<label>Company ID</label>
+<input type="text" name="fld_company_id" />
+
+<br />
+<label>TID</label>
+<input type="text" name="fld_tid" />
+
+<br />
+<label>Merchant Type</label>
+<input type="text" name="fld_merchant_type" />
+
+<br />
+<label>Auto TID</label>
+<input type="text" name="fld_auto_tid" />
+
+<br />
+<label>Status</label>
+<input type="text" name="fld_status" />
+
+<br />
+<label>Multiple Cur</label>
+<input type="text" name="fld_multiple_cur" />
+
+<br />
+<label>Monitored</label>
+<input type="text" name="fld_monitored" />
+
+<br />
+<label>Group ID</label>
+<input type="text" name="fld_groupid" />
+
+<br />
+<input type="submit" value="Run Query from Merchant Table">
+</form>
+ 
+<br />
+
+</body>
+</html>
+
+<?php
+
+
+?>
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8

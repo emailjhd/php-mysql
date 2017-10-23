@@ -1,5 +1,30 @@
+<<<<<<< HEAD
 <?php
 include 'common.php';
+=======
+<!docttype html>
+<head>
+<meta charset="utf-8">
+  <link rel="stylesheet" href="css/viewstyle.css">
+  <title>Database Query Result</title>
+<a href="index.html">Home Page</a>
+<style>
+table, th, td {
+        background-color:#eee;border-collapse:collapse;
+        padding: 5px;
+        border: 1px solid black;
+}
+</style>
+
+</head>
+<body>
+
+<?php
+session_start();
+$servername = "pm01tprmdb01v";
+$username = "sgarcia";
+$password = "nu98pa34ss4r";
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 $mode = "$_POST[mode]";
 switch ($mode) {
 
@@ -9,15 +34,25 @@ case 0:
         $searchStr=$fld_merchant_no;
         $header="Search for Scheduled MID data";
         $sql_header=array("Merchant Number", "Amex Merchant", "Diners Merchant", "Bank Code", "Account Number", "Sort Code", "Company ID", "TID", "Merchant Type", "Auto TID", "Status", "Multiple Currency", "Monitored", "Group ID");
+<<<<<<< HEAD
         $queryupdate="";
         $query="SELECT `fld_merchant_no`,`fld_amex_merchant`,`fld_diners_merchant`,`fld_bank_code`,`fld_account_no`,`fld_sort_code`,`fld_company_id`,`fld_tid`,`fld_merchant_type`,`fld_auto_tid`,`fld_status` , `fld_multiple_cur` ,`fld_monitored`,`fld_groupid` FROM `tbl_merchant` WHERE fld_merchant_no in ($fld_merchant_no)  OR fld_amex_merchant in ($fld_merchant_no) OR fld_diners_merchant in  ($fld_merchant_no);";
         break;
+=======
+        $query="SELECT `fld_merchant_no`,`fld_amex_merchant`,`fld_diners_merchant`,`fld_bank_code`,`fld_account_no`,`fld_sort_code`,`fld_company_id`,`fld_tid`,`fld_merchant_type`,`fld_auto_tid`,`fld_status` , `fld_multiple_cur` ,`fld_monitored`,`fld_groupid` FROM `tbl_merchant` WHERE fld_merchant_no in ($fld_merchant_no)  OR fld_amex_merchant in ($fld_merchant_no) OR fld_diners_merchant in  ($fld_merchant_no);";
+        break;
+
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case 1:
         $dbname = "db_psp";
         $fld_id_no = "$_POST[fld_id]";
         $header="Search for Company Data";
         $sql_header=array("Id", "Company Name", "Export", "Email Type", "Status", "Batch Priority");
+<<<<<<< HEAD
         $queryupdate="";
+=======
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
         $query="SELECT `fld_id`,`fld_company_name`,`fld_export`,`fld_email_type`,`fld_status`,`fld_batch_priority` FROM `tbl_company`  WHERE fld_id in ($fld_id_no);";
         break;
 case 2:
@@ -25,6 +60,7 @@ case 2:
         $fld_id_no = "$_POST[fld_id]";
         $header="Search for Scheduled Emails";
         $sql_header=array("Id", "Email", "Email Type");
+<<<<<<< HEAD
         $queryupdate="";
         $query="SELECT `fld_id`,`fld_email`,`fld_email_type` FROM `tbl_email` WHERE fld_id in ($fld_id_no);";
         break;
@@ -44,11 +80,25 @@ case 4:
         $queryupdate="UPDATE tbl_merchant SET fld_monitored='1', fld_last_update=NOW() WHERE fld_merchant_no in ($fld_merchant_no);";
         $query="SELECT `fld_merchant_no`,`fld_monitored` FROM `tbl_merchant` WHERE `fld_merchant_no` in ($fld_merchant_no);";
         break;
+=======
+        $query="SELECT `fld_id`,`fld_email`,`fld_email_type` FROM `tbl_email` WHERE fld_id in ($fld_id_no);";
+        break;
+case 3:
+	include 'update.php';
+        break;
+case 4:
+	include 'resetflag.php';
+        break;
+case 18:
+	include 'changeflag.php';
+	break;
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case 5:
 	$dbname = "db_ccardcfg";
         $fld_groupid = "$_POST[fld_id]";
         $header="Ad-hoc Merchant Exports";
         $sql_header=array("Merchant Name", "Group ID","Group Name", "Merchant Number","Merchant 2", "Amex Merchant", "Diners Merchant", "Bank Code", "TID", "Merchant Type", "Service Type", "Merchant Capabilities", "Auto TID", "Card Accepted");
+<<<<<<< HEAD
         $queryupdate="";
         $query="SELECT fld_merchant_name, fld_groupid,fld_group_name, fld_merchant_no,fld_merchant_2, fld_amex_merchant, fld_diners_merchant,fld_bank_code,fld_tid,fld_merchant_type,fld_service_type,fld_merchant_capabilities,fld_auto_tid, fld_card_accepted  FROM tbl_merchant WHERE  fld_groupid in ($fld_groupid);";
         break;
@@ -78,29 +128,64 @@ case 8:
         $sql_header=array("Group ID","Merchant Number", "Merchant Capabilities","Service Types","Card Types");
         $queryupdate="UPDATE tbl_merchant SET $fld_field  =  $fld_new_value  WHERE fld_groupid in ($fld_groupid);";
         $query="SELECT fld_groupid, fld_merchant_no, fld_merchant_capabilities, fld_service_type, fld_card_accepted FROM tbl_merchant WHERE fld_groupid in ($fld_groupid) order by fld_groupid, $fld_field;";
+=======
+        $query="SELECT `fld_merchant_name`, `fld_groupid`,`fld_group_name`, `fld_merchant_no`,`fld_merchant_2`, `fld_amex_merchant`, `fld_diners_merchant`,`fld_bank_code`,`fld_tid`,`fld_merchant_type`,`fld_service_type`,`fld_merchant_capabilities`,`fld_auto_tid`, `fld_card_accepted`  FROM `tbl_merchant` WHERE  `fld_groupid` in ($fld_groupid);";
+        break;
+case 6:
+	include 'movemids.php'; 
+	break;
+case 7:
+      	include 'changeenmass.php';
+        break;
+case 8:
+        include 'changeenmassbygroup.php';
+        break;
+case 9:
+	include 'changeservicetypebymerchant.php';
+	break;
+case 10:
+        include 'changeservicetypebygroup.php';
+        break;
+case 11:
+        include 'cacceptedbymerchant.php';
+        break;
+case 12:
+        include 'cacceptedbygroup.php';
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
         break;
 case 13:
 	$dbname = "db_psp";
         $fld_id = "$_POST[fld_id]";
+<<<<<<< HEAD
         $searchStr=$fld_id;
         $header="Ad-Hoc Company Export";
         $queryupdate="";
+=======
+//      echo "*".$fld_id."*";
+        $searchStr=$fld_id;
+        $header="Ad-Hoc Company Export";
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
         $query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
         $sql_header=array("GID", "Company Name");
         break;
 case 14: 
+<<<<<<< HEAD
 	$dbname = "db_ccardcfg";
         $fld_merchant_no = "$_POST[fld_id]";
         $header="Correct Export Times";
         $sql_header=array("GID", "Export Time");
         $queryupdate="UPDATE db_ccardcfg.tbl_export_times set fld_last_export='2001-01-01 00:00:01' where fld_lnk in (select fld_id from db_ccardcfg.tbl_merchant where fld_merchant_no in ($fld_merchant_no);";
         $query="select tm.fld_merchant_no, et.fld_last_export from tbl_merchant as tm, tbl_export_times as et where tm.fld_id=et.fld_lnk and tm.fld_merchant_no in ($fld_merchant_no)";
+=======
+	include 'correctexporttime.php';
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 	break;
 case 15:
         $dbname = "db_ccard";
         $header="Transaction Counts";
         $fld_merchant_no = "$_POST[fld_id]";
         $sql_header=array("Merchant Number", "Number of Transaction IDs");
+<<<<<<< HEAD
         $queryupdate="";
         $query="select fld_merchant_no, count(fld_tran_id) from tbl_ccard_hash where fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no;";
         break;
@@ -138,12 +223,29 @@ case 19:
         $sql_header=array("Merchant Name", "Bank Code", "Sort Code", "Account Number");
         $queryupdate="UPDATE tbl_merchant SET fld_bank_code=$fld_bank_code, fld_sort_code=$fld_sort_code, fld_account_no=$fld_account_no  WHERE fld_merchant_no in ($fld_merchant_no);";
         $query="SELECT fld_merchant_name,fld_bank_code,fld_sort_code,fld_account_no FROM tbl_merchant WHERE fld_merchant_no in ($fld_merchant_no);";
+=======
+        $query="select fld_merchant_no, count(fld_tran_id) from tbl_ccard_hash where fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no;";
+        break;
+case 16:
+	include 'updatetransactionsuccess.php';
+	break;
+case 17:
+        include 'updatetransactionfailure.php';
+        break;
+case 19:
+        include 'updateaccountdetailsenmass.php';
+        break;
+
+        $sql_header=array("Merchant Number", "Transaction IDs");
+        $query="select fld_merchant_no, count(fld_tran_id) from tbl_ccard_hash where fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no;";
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
         break;
 case 20:
         $dbname = "db_ccard";
         $header="Morning check transaction count";
         $fld_merchant_no = "$_POST[fld_id]";
         $sql_header=array("Merchant Number", "Transaction Type", "Response code", "Customer Instruction", "Transaction Count");
+<<<<<<< HEAD
         $queryupdate="";
         $query="select fld_merchant_no as Merchant_Number, fld_trans_type as Transaction_Type, fld_response_code as Response_Code, fld_cust_inst as Customer_Instruction,  count(fld_tran_ID) as Transaction_Count from db_ccard.tbl_ccard_hash where fld_trans_date = date_format(UTC_DATE(),  '%y%m%d') and fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no,  fld_trans_type,  fld_response_code,  fld_cust_inst;";
         break;
@@ -177,11 +279,24 @@ $result=mysql_query($query) or trigger_error(mysql_error().$query);
 $_SESSION['mysql_data'] = array();
 $rowno=mysql_num_rows($result);
 if ($rowno > 0) {
+=======
+        $query="select fld_merchant_no as Merchant_Number, fld_trans_type as Transaction_Type, fld_response_code as Response_Code, fld_cust_inst as Customer_Instruction,  count(fld_tran_ID) as Transaction_Count from db_ccard.tbl_ccard_hash where fld_trans_date = date_format(UTC_DATE(),  '%y%m%d') and fld_merchant_no in ($fld_merchant_no) group by fld_merchant_no,  fld_trans_type,  fld_response_code,  fld_cust_inst;";
+        break;
+}
+mysql_connect($servername,$username,$password);
+mysql_select_db($dbname) or die( "Unable to select database");
+$result=mysql_query($query) or trigger_error(mysql_error().$query);
+$_SESSION['mysql_data'] = array();
+$rowno=mysql_num_rows($result);
+if ($rowno > 0) 
+	{
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
      echo"<table border=1><tr>";
      foreach ($sql_header as $value) {
          echo "<th>$value</th>";
      }
      echo"</tr>";
+<<<<<<< HEAD
      $_SESSION['mysql_data'][] = $sql_header;
      while($row = mysql_fetch_assoc($result)) {
         echo"<tr>";
@@ -190,6 +305,20 @@ if ($rowno > 0) {
           echo"</tr>"; 
           $_SESSION['mysql_data'][] = $row; }
 } else {
+=======
+$_SESSION['mysql_data'][] = $sql_header;
+	
+     while($row = mysql_fetch_assoc($result))
+     {
+        echo"<tr>";
+      foreach ($row as $value) {
+ echo"<td>$value</td>";
+        }
+        echo"</tr>"; 
+$_SESSION['mysql_data'][] = $row;
+   }
+ } else {
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
     echo " 0 results";
 }
         
@@ -197,4 +326,7 @@ mysql_close();
 echo "<a href='csv.php'>export to CSV</a>
 </body></html>";
 ?>
+<<<<<<< HEAD
 <a href='Logout.php'>Logout</a>
+=======
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8

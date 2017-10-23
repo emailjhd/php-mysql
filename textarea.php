@@ -2,11 +2,20 @@
  
 <html>
 <body>
+<<<<<<< HEAD
 <a href="index.php">Home Page</a>
 <?php
 
 include 'common.php';
 $mode = $_POST['mode'];
+=======
+<a href="index.html">Home Page</a>
+<?php
+
+
+$mode = $_POST[mode];
+//        echo "i equals $mode";
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 
 switch ($mode) {
 case 0:
@@ -37,6 +46,10 @@ case 3:
         $dest="process.php";
 	$Label="MID List:";
         break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case 4:
 	$input="textarea";
         $header="Set Status Flag";
@@ -70,12 +83,20 @@ case 6:
         break;
 
 case 7:
+<<<<<<< HEAD
 	$input="textareatextboxdrop";
         $label2="New Value:";
         $label3="Applied against:";
 	$Label="<b>MID List</b>";
         $header="Change Merchant settings En Mass (By MID)";
         $advice="Update multiple MIDs for specific values. Once done raise a task to TSG to resync the EM database";
+=======
+	$input="textareatextbox";
+        $label2="New Merchant Capabilities:";
+	$Label="<b>MID List</b>";
+        $header="Change Merchant Capabilities En Mass (By Merchant Number)";
+        $advice="Update multiple MIDs 'Merchant Capabilities' flag. Once done raise a task to TSG to resync the EM database";
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
         $dest="process.php";
         break;
 
@@ -128,12 +149,24 @@ case 12:
 
 case 13:
         $input="dropdown";
+<<<<<<< HEAD
         $dbname = "db_psp";
+=======
+        $servername = "pm01tprmdb01v";
+        $username = "sgarcia";
+        $password = "nu98pa34ss4r";
+        $dbname = "db_psp";
+// 	$query="select fld_id, fld_company_name from tbl_company where fld_trader_lnk=$fld_id order by fld_id;";
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
         $Label="<b>Partner List</b>";
         $header="Ad-Hoc Company Export";
         $advice="We receive requests from CIADmin and Sales to export a list of companies linked to a specfic partner";
 	$dest="process.php";
         break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case 14:
         $input="textarea";
         $header="Correct Export Times";
@@ -149,6 +182,10 @@ case 15:
         $dest="process.php";
         $Label="<b>MID list:<b>";
         break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case 16:
         $input="textbox";
         $header="Update Transaction Status for Export (SUCCESS)";
@@ -156,6 +193,10 @@ case 16:
         $dest="process.php";
         $label1="<b>Transaction ID:<b>";
         break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case 17:
         $input="textbox";
         $header="Update Transaction Status for Export (FAILURE)";
@@ -163,6 +204,11 @@ case 17:
         $dest="process.php";
         $label1="<b>Transaction IDs:<b>";
         break;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case 19:
         $input="3textboxtextarea";
         $header="Change Account Details En Mass";
@@ -180,8 +226,15 @@ case 20:
         $dest="process.php";
         $Label="<b>MID list:<b>";
         break;
+<<<<<<< HEAD
 }
 
+=======
+
+}
+
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 echo"<h3>$header</h3>";
 echo"<p>$advice</p>";
 echo"<form action='$dest' method='post'>";
@@ -192,15 +245,24 @@ case "textarea":
 	echo"<tr><td valign='top'>$Label</td>";
 	echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
 	break;
+<<<<<<< HEAD
 case "textbox":
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	break;
+=======
+
+case "textbox":
+        echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
+	break;
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case "2textbox":
 	echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id3' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
+<<<<<<< HEAD
 case "textareatextboxdrop":
         echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
@@ -208,27 +270,46 @@ case "textareatextboxdrop":
         echo"<tr><td>$label3</td><td><select name='fld_id3'><option value='fld_merchant_capabilities'>Merchant Capabilities</option>";
         echo"<option value='fld_service_type'>Service Types</option><option value='fld_card_accepted'>Card Types</options></select></td></tr>";
         break;
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case "textareatextbox":
         echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id1'></td></tr>";
         break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case "3textbox":
 	echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
 	echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
 	break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case "textboxandtextarea":
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
 	echo"<td><textarea name='fld_id2' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
         break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case "4textbox":
 	echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
         echo"<tr><td>$label1</td><td><input type='text' name='fld_id1'></td></tr>";
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
         break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 case "3textboxtextarea":
         echo"<tr><td valign='top'>$Label</td>";
         echo"<td><textarea name='fld_id' rows='5' cols='40'></textarea></td></tr>";
@@ -236,6 +317,7 @@ case "3textboxtextarea":
         echo"<tr><td>$label2</td><td><input type='text' name='fld_id2'></td></tr>";
 	echo"<tr><td>$label3</td><td><input type='text' name='fld_id3'></td></tr>";
         break;
+<<<<<<< HEAD
 case "dropdown":
 // Create database connection
 	mysql_connect($servername,$username,$password);
@@ -253,6 +335,40 @@ case "dropdown":
 }
 
         echo"</table>";
+=======
+
+
+case "dropdown":
+
+
+// Create database connection
+
+	mysql_connect($servername,$username,$password);
+	mysql_select_db($dbname) or die( "Unable to select database");
+
+
+
+	$query="select fld_id, fld_trader from tbl_trader order by fld_trader;";
+
+	$result=mysql_query($query);
+	echo "<select name='fld_id'>";
+
+	while($row = mysql_fetch_assoc($result))
+
+	{
+
+
+	$fld_trader=$row["fld_trader"];
+	$fld_id=$row["fld_id"];
+	echo "<option value='$fld_id'>$fld_trader</option>";
+
+	}
+
+	echo "</select>";
+        break;
+}
+echo"</table>";
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8
         echo"<input type='hidden' name='mode' value='$mode'>";
         echo"<input type='Submit' />";
         echo"</form>";

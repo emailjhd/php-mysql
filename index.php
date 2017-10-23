@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 $servername = "pm01tprmdb01v";
@@ -21,3 +22,16 @@ Password <input type='password' name='password' placeholder='Your Password' maxl
 </form>";
 }
 ?>
+=======
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Fetch 'Merchant Number'  'Amex Merchant' and  'Diners Merchant' from 'Merchant Table'</h3>
+
+<form action="process.php" method="post">
+<b>Merchant Number</b>:<textarea name="fld_merchant_no" rows="5" cols="40"></textarea><br><br>
+<input type="Submit" />
+</form>
+</body>
+</html>
+>>>>>>> 69018d645f844338d43ae19317f14407df0977b8

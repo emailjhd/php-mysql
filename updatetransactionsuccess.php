@@ -29,20 +29,6 @@ mysql_select_db($dbname) or die( "Unable to select database");
 
 $fld_tran_id = "$_POST[fld_id1]";
 $header="Update Transaction Status for Export";
-<<<<<<< HEAD
-$sql_header=array("Authorised Merchant", "Payment");
-$queryupdate="UPDATE tbl_ccard_hash SET fld_authorised='SUCCESS', fld_payment='0'  WHERE fld_tran_id in ($fld_tran_id);";
-$result1=mysql_query($queryupdate) or trigger_error(mysql_error().$query);
-$query="SELECT `fld_authorised`,`fld_payment` FROM `tbl_ccard_hash` WHERE `fld_tran_id` in ($fld_tran_id);";
-$rowno=mysql_num_rows($result);
-if ($rowno > 0) 
-	{
-echo "<table><tr><th>Authorised Merchant</th><th>Payment</th></tr>";	
-while($row = mysql_fetch_array($result))
-{
-
-echo "<tr><td>".$row["fld_authorised"]."</td><td>".$row["fld_payment"]."</td><tr>";
-=======
 $sql_header=array("Transaction ID", "Status", "Payment");
 $queryupdate="UPDATE tbl_ccard_hash SET fld_authorised='SUCCESS', fld_payment='0'  WHERE fld_tran_id in ($fld_tran_id);";
 $result1=mysql_query($queryupdate) or trigger_error(mysql_error().$query);
@@ -55,7 +41,6 @@ while($row = mysql_fetch_array($result))
 {
 
 echo "<tr><td>".$row["fld_tran_id"]."</td><td>".$row["fld_authorised"]."</td><td>".$row["fld_payment"]."</td><tr>";
->>>>>>> 69018d645f844338d43ae19317f14407df0977b8
 
 
 }
