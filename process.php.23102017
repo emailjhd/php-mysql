@@ -149,7 +149,7 @@ case 20:
         break;
 }
 
-echo "<!docttype html> <head> <style> table, th, td { background-color:#eee;border-collapse:collapse;padding: 5px;border: 1px solid black}</style> <meta charset='utf-8'> <link rel='stylesheet' href='css/viewstyle.css'> <title>Database Query Result</title> </head>";
+echo "<!docttype html> <head> <meta charset='utf-8'> <link rel='stylesheet' href='css/viewstyle.css'> <title>Database Query Result</title> </head>";
 echo " <body> ";
 include 'toolbar.php';
 

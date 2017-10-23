@@ -1,7 +1,6 @@
 <?php
 session_start();
 $servername = "pm01tprmdb01v";
-// if ($_SESSION['auth1frg34'] > 0) {
  if (isset($_POST['user'])) {
 $username=$_POST['user'];
 $password=$_POST['password'];
@@ -21,5 +20,4 @@ Password <input type='password' name='password' placeholder='Your Password' maxl
 <button class = 'btn btn-lg btn-primary btn-block' type ='submit' name ='Login'>Sign In</button>
 </form>";
 }
-// }
 ?>

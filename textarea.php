@@ -2,7 +2,7 @@
  
 <html>
 <body>
-<a href="index.html">Home Page</a>
+<a href="index.php">Home Page</a>
 <?php
 
 include 'common.php';
